@@ -1,13 +1,18 @@
 <template>
   <div>
     <div class="set-timer">
-        <input class="text" type="number" :value="value">
+        <input class="text" type="number" :value="value" @change="onChange">
     </div>
   </div>
 </template>
 <script>
   export default {
-    props: ['value']
+    props: ['value'],
+    methods: {
+      onChange (ev) {
+        this.$emit('valueChanged', ev.target.value)
+      }
+    }
   }
 </script>
 <style scoped lang="sass">

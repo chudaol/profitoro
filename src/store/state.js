@@ -5,18 +5,16 @@ const config = {
   pomodorosTillLongBreak: 3
 }
 
-const settings = {
-  userName: 'Olga',
-  profile_picture: require('../assets/myAvatar.png'),
-  uid: '',
-  isLoggedIn: true
-}
+const user = null
+const configRef = null
+const statisticsRef = null
+const displayName = ''
 
 const statistics = {
   pomodorosToday: 0,
   pomodorosLastWeek: 0,
   pomodorosLastMonth: 0,
-  pomodorosTotal: 0,
+  totalPomodoros: 0,
   workoutsToday: 0,
   workoutLastWeek: 0,
   workoutsLastMonth: 0,
@@ -25,6 +23,9 @@ const statistics = {
 
 export default {
   config,
-  settings,
-  statistics
+  user,
+  configRef,
+  statisticsRef,
+  statistics,
+  displayName
 }

@@ -5,52 +5,29 @@
     </div>
     <div class="controls">
       <div class="btn-group" role="group">
-        <button @click="start" type="button" :class="{disabled: isStarted && !isPaused}" class="btn btn-link">Start</button>
-        <button @click="pause" type="button" :class="{disabled: !isStarted || isPaused}" class="btn btn-link">Pause</button>
-        <button @click="stop" type="button" :class="{disabled: !isStarted || isStopped}" class="btn btn-link">Stop</button>
+        <button @click="start" type="button" :class="{disabled: state === 0}" class="btn btn-link">Start</button>
+        <button @click="pause" type="button" :class="{disabled: state === 1 || state === 2}" class="btn btn-link">Pause</button>
+        <button @click="stop" type="button" :class="{disabled: state === 2}" class="btn btn-link">Stop</button>
       </div>
     </div>
   </div>
 </template>
 <script>
   import SvgCircleSector from './SvgCircleSector'
-
-  const SECOND = 1000
-
-  /**
-   * Adds a trailing 0 on the left of the given value
-   * @param {string|number} value
-   * @returns {string}
-   */
-  function leftPad (value) {
-    if (('' + value).length > 1) {
-      return value
-    }
-
-    return '0' + value
-  }
-
-  /**
-   * Returns number of seconds between a given start time and now
-   * @param {timestamp} startTime
-   * @returns {number} the number of seconds
-   */
-  function numberOfSecondsFromNow (startTime) {
-    if (!startTime) {
-      return 0
-    }
-    return Math.floor((Date.now() - startTime) / SECOND)
+  import {leftPad, numberOfSecondsFromNow} from '@/utils/utils'
+  const STATE = {
+    STARTED: 0,
+    PAUSED: 1,
+    STOPPED: 2
   }
 
   export default {
     props: ['time'],
     data () {
       return {
-        interval: null,
         timestamp: this.time,
-        isStarted: false,
-        isPaused: false,
-        isStopped: true,
+        interval: null,
+        state: STATE.STOPPED,
         startTime: null,
         pauseTime: null,
         pauseSeconds: 0
@@ -76,49 +53,45 @@
     methods: {
       _reset () {
         this.pauseTime = null
-        this.isStarted = true
-        this.isStopped = false
-        this.isPaused = false
+        this.state = STATE.STOPPED
         if (this.interval) {
           clearInterval(this.interval)
         }
       },
       start () {
-        if (this.isStarted === false) {
+        if (this.state !== STATE.STARTED) {
           this.timestamp = this.time
           this.startTime = Date.now()
         }
         this.pauseSeconds += numberOfSecondsFromNow(this.pauseTime)
         this._reset()
+        this.state = STATE.STARTED
         this.interval = setInterval(() => {
           // seconds from the start time until now
           let secondsFromStart = numberOfSecondsFromNow(this.startTime)
 
           this.timestamp = this.time - secondsFromStart + this.pauseSeconds
           if (this.timestamp <= 0) {
+            this.stop()
             this.$emit('finished')
-            this.timestamp = this.time
           }
         }, 10)
       },
       pause () {
         this.pauseTime = Date.now()
         clearInterval(this.interval)
-        this.isPaused = true
+        this.state = STATE.PAUSED
       },
       stop () {
         clearInterval(this.interval)
         this.timestamp = this.time
         this.pauseSeconds = 0
-        this.isStopped = true
-        this.isStarted = false
-        this.isPaused = false
+        this.state = STATE.STOPPED
       }
     },
     watch: {
       time () {
-        this.isStarted = false
-        this.start()
+        this.timestamp = this.time
       }
     }
   }
