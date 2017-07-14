@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <pomodoro-timer></pomodoro-timer>
-    <statistics v-if="user && !user.isAnonymous"></statistics> 
     <settings v-if="user && !user.isAnonymous"></settings>
   </div>
 </template>
