@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <settings v-if="user && !user.isAnonymous"></settings>
+    <router-view></router-view>
   </div>
 </template>
 <script>
   import {PomodoroTimer, Settings, Statistics} from './sections'
   import {mapState} from 'vuex'
+  import router from '@/router'
 
   export default {
     computed: {
@@ -15,7 +16,8 @@
       PomodoroTimer,
       Settings,
       Statistics
-    }
+    },
+    router
   }
 </script>
 <style scoped lang="sass">
