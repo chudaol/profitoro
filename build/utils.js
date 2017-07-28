@@ -32,6 +32,16 @@ exports.cssLoaders = function (options) {
       })
     }
 
+    if (loader === 'sass') {
+      loaders.push({
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [
+            path.resolve(__dirname, '../src/styles/main.scss')
+          ]
+        }
+      })
+    }
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
