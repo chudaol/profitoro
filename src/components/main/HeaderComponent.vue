@@ -1,36 +1,56 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col-1">
+    <nav class="navbar navbar-toggleable-md navbar-light">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-brand">
         <logo></logo>
       </div>
-      <div v-if="user && !user.isAnonymous" class="col-11 row">
-        <div class="col-2">
-          <p>Welcome <span>{{name}}</span></p>
-        </div>
-        <router-link class="col" to="/">Home </router-link>
-        <router-link class="col" to="statistics">Statistics </router-link>
-        <router-link class="col" to="workouts">Workouts </router-link>
-        <router-link class="col" to="settings">Settings </router-link>
-        <div class="col">
-          <button class="btn btn-secondary" @click="onLogout">Logout</button>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarHeader">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{disabled:isAnonymous}" :to="settingsPath">Settings </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{disabled:isAnonymous}" :to="statisticsPath">Statistics </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :class="{disabled:isAnonymous}" :to="workoutsPath">Workouts </router-link>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button v-if="!isAnonymous" class="btn btn-secondary" @click="onLogout">Logout</button>
+          <button v-if="isAnonymous" class="btn btn-secondary" @click="onLogout">Go to the start page</button>
+        </form>
       </div>
-      <div v-if="user && user.isAnonymous" class="col">
-        <button class="btn btn-secondary" @click="onLogout">Go to the start page</button>
-      </div>
-    </div>
+    </nav>
   </div>
 </template>
 <script>
   import {mapActions, mapGetters, mapState} from 'vuex'
   import router from '@/router'
-  import Logo from '@/components/main/LogoComponent'
+  import Logo from '@/components/common/Logo'
 
   export default {
     computed: {
       ...mapGetters({name: 'getDisplayName'}),
-      ...mapState(['user'])
+      ...mapState(['user']),
+      isAnonymous () {
+        return this.user && this.user.isAnonymous
+      },
+      settingsPath () {
+        return this.isAnonymous ? '/' : 'settings'
+      },
+      statisticsPath () {
+        return this.isAnonymous ? '/' : 'statistics'
+      },
+      workoutsPath () {
+        return this.isAnonymous ? '/' : 'workouts'
+      }
     },
     methods: {
       ...mapActions(['logout']),
