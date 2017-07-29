@@ -25,4 +25,7 @@ $input-padding: 10px 0;
     border-bottom-color: $color-white;
     @include placeholder(rgba($color-white, 0.7));
   }
+  &:focus {
+    outline: none;
+  }
 }

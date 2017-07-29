@@ -115,7 +115,6 @@
   }
   .button-lp-secondary {
     width: 100%;
-    min-height: 65px;
     font-size: $font-size-small;
   }
   .anonymous-text {
