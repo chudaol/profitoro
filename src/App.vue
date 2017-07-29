@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app">
     <landing-page v-if="!user"></landing-page>
     <main-content v-if="user"></main-content>
   </div>

@@ -1,3 +1,3 @@
 export {default as Authentication} from './Authentication'
-export {default as GoToAppLink} from './GoToAppLink'
+export {default as LogoText} from './LogoText'
 export {default as Tagline} from './Tagline'

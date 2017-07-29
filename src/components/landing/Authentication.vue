@@ -1,18 +1,25 @@
 <template>
-  <div>
-    <div class="container">
-      <div><small>{{ titleText }}</small></div>
-      <form>
-        <div class="form-group">
-          <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="email" type="email" placeholder="email">
+  <div class="loginForm-holder">
+    <div>{{ titleText }}</div>
+    <form class="form row">
+      <div class="col-md-12 col-lg-6 form-group">
+        <input class="input white" v-model="email" type="email" placeholder="username or email address" />
+        <input class="input white" v-model="password" type="password" placeholder="password" />
+      </div>
+
+      <div class="buttons-holder col-md-12">
+        <button type="button" @click="onAction" class="button button-lp-primary">{{ this.actionButtonText }}</button>
+        <span class="or-text">OR</span>
+        <div class="anonymous-login">
+          <button @click="authenticateAnonymous" class="button button-lp-secondary">
+            START WITHOUT REGISTRATION
+          </button>
+          <div class="anonymous-text">This version will not allow you to personalise your profile or add new workouts</div>
         </div>
-        <div class="form-group">
-          <input class="rounded-0 border-top-0 border-left-0 border-right-0 form-control" v-model="password" type="password" placeholder="password">
-        </div>
-        <button @click="onAction" class="rounded-0 btn btn-secondary btn-block">{{ this.actionButtonText }}</button>
-      </form>
-      <hr/>
-      <button @click="onSwitch" class="rounded-0 btn btn-secondary btn-block">{{ this.switchButtonText }}</button>
+      </div>
+    </form>
+    <div class="form-changer col-md-12 col-lg-6">
+      <button @click="onSwitch" class="button button-lp-primary-faded">{{ this.switchButtonText }}</button>
     </div>
   </div>
 </template>
@@ -47,7 +54,7 @@
       }
     },
     methods: {
-      ...mapActions(['createUser', 'authenticate']),
+      ...mapActions(['createUser', 'authenticate', 'authenticateAnonymous']),
       onSwitch () {
         this.isLogin = !this.isLogin
       },
@@ -61,8 +68,70 @@
   }
 </script>
 <style scoped lang="sass">
-  button {
-    cursor: pointer
+.loginForm-holder {
+  max-width: 90%;
+  margin-top: 100px;
+}
+.form-changer {
+  padding: 50px 0 20px;
+  border-top: 2px dotted $color-white;
+}
+.input {
+  margin-bottom: 30px;
+}
+.buttons-holder {
+  @include flexbox();
+  @include align-items(center);
+  @include justify-content(space-between);
+
+  @media (max-width: $screen-md-min) {
+    @include justify-content(center);
+    @include flex-direction(column);
   }
+
+  .button-lp-primary {
+    width: 50%;
+
+    @media (max-width: $screen-md-min) {
+      width: 100%;
+    }
+  }
+  .or-text {
+    font-size: $font-size-medium;
+    font-weight: bold;
+
+    @media (max-width: $screen-md-min) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  .anonymous-login {
+    position: relative;
+    width: 40%;
+
+    @media (max-width: $screen-md-min) {
+      width: 100%;
+    }
+  }
+  .button-lp-secondary {
+    width: 100%;
+    min-height: 65px;
+    font-size: $font-size-small;
+  }
+  .anonymous-text {
+    position: absolute;
+    font-weight: lighter;
+    margin-top: 20px;
+
+    @media (max-width: $screen-md-min) {
+      position: relative;
+    }
+  }
+}
+.button-lp-primary-faded {
+  text-transform: none;
+  font-weight: normal;
+}
+
 </style>
 
