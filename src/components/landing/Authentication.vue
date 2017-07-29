@@ -84,7 +84,7 @@
   @include align-items(center);
   @include justify-content(space-between);
 
-  @media (max-width: $screen-md-min) {
+  @include media-breakpoint-down(md) {
     @include justify-content(center);
     @include flex-direction(column);
   }
@@ -92,7 +92,7 @@
   .button-lp-primary {
     width: 50%;
 
-    @media (max-width: $screen-md-min) {
+    @include media-breakpoint-down(md) {
       width: 100%;
     }
   }
@@ -100,7 +100,7 @@
     font-size: $font-size-medium;
     font-weight: bold;
 
-    @media (max-width: $screen-md-min) {
+    @include media-breakpoint-down(md) {
       margin-top: 20px;
       margin-bottom: 20px;
     }
@@ -109,7 +109,7 @@
     position: relative;
     width: 40%;
 
-    @media (max-width: $screen-md-min) {
+    @include media-breakpoint-down(md) {
       width: 100%;
     }
   }
@@ -123,7 +123,7 @@
     font-weight: lighter;
     margin-top: 20px;
 
-    @media (max-width: $screen-md-min) {
+    @include media-breakpoint-down(md) {
       position: relative;
     }
   }
