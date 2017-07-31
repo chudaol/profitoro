@@ -11,9 +11,7 @@
         <button type="button" @click="onAction" class="button button-lp-primary">{{ this.actionButtonText }}</button>
         <span class="or-text">OR</span>
         <div class="anonymous-login">
-          <button @click="authenticateAnonymous" class="button button-lp-secondary">
-            START WITHOUT REGISTRATION
-          </button>
+          <nuxt-link class="button button-lp-secondary" to="pomodoro" tag="button">START WITHOUT REGISTRATION</nuxt-link>
           <div class="anonymous-text">This version will not allow you to personalise your profile or add new workouts</div>
         </div>
       </div>
@@ -23,6 +21,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import {mapActions} from 'vuex'
 
@@ -67,70 +66,73 @@
     }
   }
 </script>
-<style scoped lang="sass">
-.loginForm-holder {
-  max-width: 90%;
-  margin-top: 100px;
-}
-.form-changer {
-  padding: 50px 0 20px;
-  border-top: 2px dotted $color-white;
-}
-.input {
-  margin-bottom: 30px;
-}
-.buttons-holder {
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(space-between);
 
-  @include media-breakpoint-down(md) {
-    @include justify-content(center);
-    @include flex-direction(column);
+<style scoped lang="scss">
+  @import "../../assets/styles/main";
+
+  .loginForm-holder {
+    max-width: 90%;
+    margin-top: 100px;
   }
-
-  .button-lp-primary {
-    width: 50%;
+  .form-changer {
+    padding: 50px 0 20px;
+    border-top: 2px dotted $color-white;
+  }
+  .input {
+    margin-bottom: 30px;
+  }
+  .buttons-holder {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(space-between);
 
     @include media-breakpoint-down(md) {
-      width: 100%;
+      @include justify-content(center);
+      @include flex-direction(column);
+  }
+
+    .button-lp-primary {
+      width: 50%;
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
     }
   }
-  .or-text {
-    font-size: $font-size-medium;
-    font-weight: bold;
+    .or-text {
+      font-size: $font-size-medium;
+      font-weight: bold;
 
-    @include media-breakpoint-down(md) {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      @include media-breakpoint-down(md) {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
   }
-  .anonymous-login {
-    position: relative;
-    width: 40%;
-
-    @include media-breakpoint-down(md) {
-      width: 100%;
-    }
-  }
-  .button-lp-secondary {
-    width: 100%;
-    font-size: $font-size-small;
-  }
-  .anonymous-text {
-    position: absolute;
-    font-weight: lighter;
-    margin-top: 20px;
-
-    @include media-breakpoint-down(md) {
+    .anonymous-login {
       position: relative;
+      width: 40%;
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
     }
   }
-}
-.button-lp-primary-faded {
-  text-transform: none;
-  font-weight: normal;
-}
+    .button-lp-secondary {
+      width: 100%;
+      font-size: $font-size-small;
+  }
+    .anonymous-text {
+      position: absolute;
+      font-weight: lighter;
+      margin-top: 20px;
+
+      @include media-breakpoint-down(md) {
+        position: relative;
+    }
+  }
+  }
+  .button-lp-primary-faded {
+    text-transform: none;
+    font-weight: normal;
+  }
 
 </style>
 

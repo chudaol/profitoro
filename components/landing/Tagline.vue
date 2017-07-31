@@ -6,7 +6,7 @@
 
   }
 </script>
-<style scoped lang="sass">
+<style scoped lang="scss">
   .tagline {
     margin: 0;
     font-weight: lighter;

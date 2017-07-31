@@ -6,7 +6,8 @@
 
   }
 </script>
-<style scoped lang="sass">
+<style scoped lang="scss">
+  @import "../../assets/styles/main";
   .logo-text {
     margin: 0;
     line-height: 60px;
