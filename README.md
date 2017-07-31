@@ -1,30 +1,22 @@
-# profitoro
+# profitoro-nuxt
 
-> Enjoyful application for office workouts. \"take breaks during work. exercise during breaks.\"
+> Nuxt.js project
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+$ npm install # Or yarn install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload at localhost:3000
+$ npm run dev
 
-# build for production with minification
-npm run build
+# build for production and launch server
+$ npm run build
+$ npm start
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+# generate static project
+$ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
