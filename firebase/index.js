@@ -6,6 +6,13 @@ let config = {
   databaseURL: 'https://profitoro-ad0f0.firebaseio.com',
   authDomain: 'profitoro-ad0f0.firebaseapp.com'
 }
-let firebaseApp = firebase.initializeApp(config)
+
+let firebaseApp
+
+if (firebase.apps.length === 0) {
+  firebaseApp = firebase.initializeApp(config)
+} else {
+  firebaseApp = firebase.apps[0]
+}
 
 export default firebaseApp

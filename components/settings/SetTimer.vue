@@ -16,6 +16,7 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "../../assets/styles/main";
   .set-timer {
     height: 0%;
     position: relative;

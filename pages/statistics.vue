@@ -12,6 +12,7 @@
   import { HeaderComponent, FooterComponent } from '~/components/common'
   import {mapGetters} from 'vuex'
   export default {
+    middleware: 'authenticated',
     computed: {
       ...mapGetters({
         totalPomodoros: 'getTotalPomodoros'
@@ -24,5 +25,5 @@
   }
 </script>
 <style scoped lang="scss">
-
+  @import "../assets/styles/main";
 </style>

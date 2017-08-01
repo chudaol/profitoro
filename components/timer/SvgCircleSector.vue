@@ -57,6 +57,7 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "../../assets/styles/main";
   $big-circle-color: gray;
   $small-circle-color: lightgray;
   $segment-color: darkgray;

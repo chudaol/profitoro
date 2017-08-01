@@ -13,48 +13,36 @@
             <nuxt-link class="nav-link" to="/">Home </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" :class="{disabled:isAnonymous}" :to="settingsPath">Settings </nuxt-link>
+            <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="settings">Settings </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" :class="{disabled:isAnonymous}" :to="statisticsPath">Statistics </nuxt-link>
+            <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="statistics">Statistics </nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" :class="{disabled:isAnonymous}" :to="workoutsPath">Workouts </nuxt-link>
+            <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="workouts">Workouts </nuxt-link>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <button v-if="!isAnonymous" class="btn btn-secondary" @click="onLogout">Logout</button>
-          <button v-if="isAnonymous" class="btn btn-secondary" @click="onLogout">Go to the start page</button>
+          <button v-if="isAuthenticated" class="btn btn-secondary" @click="onLogout">Logout</button>
+          <button v-if="!isAuthenticated" class="btn btn-secondary" @click="onLogout">Go to the start page</button>
         </form>
       </div>
     </nav>
   </div>
 </template>
 <script>
-  import {mapActions, mapGetters, mapState} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
   import Logo from '~/components/common/Logo'
 
   export default {
     computed: {
-      ...mapGetters({name: 'getDisplayName'}),
-      ...mapState(['user']),
-      isAnonymous () {
-        return this.user && this.user.isAnonymous
-      },
-      settingsPath () {
-        return this.isAnonymous ? '/' : 'settings'
-      },
-      statisticsPath () {
-        return this.isAnonymous ? '/' : 'statistics'
-      },
-      workoutsPath () {
-        return this.isAnonymous ? '/' : 'workouts'
-      }
+      ...mapGetters({name: 'getDisplayName', isAuthenticated: 'isAuthenticated'})
     },
     methods: {
       ...mapActions(['logout']),
       onLogout () {
         this.logout()
+        this.$router.push('/')
       }
     },
     components: {
@@ -63,6 +51,7 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "../../assets/styles/main";
   button {
     cursor: pointer;
   }

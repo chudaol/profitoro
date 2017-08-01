@@ -37,6 +37,7 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "../../assets/styles/main";
   .figure-caption {
     text-align: center;
   }

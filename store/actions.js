@@ -148,7 +148,7 @@ export default {
    * @param {object} store
    */
   bindFirebaseReferences: firebaseAction(({state, commit, dispatch}, user) => {
-    let db = state.firebaseApp.database()
+    let db = firebaseApp.database()
     let configRef = db.ref(`/configuration/${user.uid}`)
     let statisticsRef = db.ref(`/statistics/${user.uid}`)
     dispatch('bindFirebaseReference', {reference: configRef, toBind: 'config'}).then(() => {

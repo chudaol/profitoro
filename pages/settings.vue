@@ -18,6 +18,7 @@
   import AccountSettings from '~/components/settings/AccountSettings'
 
   export default {
+    middleware: 'authenticated',
     components: {
       HeaderComponent,
       FooterComponent,
@@ -27,6 +28,7 @@
   }
 </script>
 <style scoped lang="scss">
+  @import "../assets/styles/main";
   .figure-caption {
     text-align: center;
   }
