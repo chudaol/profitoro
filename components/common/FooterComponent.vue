@@ -1,9 +1,9 @@
 <template>
-  <div class="footer fixed-bottom">
-    <div class="row justify-content-center">
-      <div class="copyright col-lg-4 col-md-4 col-sm-12 text-center">Copyright</div>
-      <div class="fact col-lg-4  col-md-4 col-sm-12 text-center">Working out sharpens your memory</div>
-      <div class="author col-lg-4  col-md-4 col-sm-12 text-center"><span class="bold">Workout Lovers</span></div>
+  <div class="footer">
+    <div class="container">
+      <span class="copyright">Copyright</span>
+      <span class="fact">Working out sharpens your memory</span>
+      <span class="author bold">Workout Lovers</span>
     </div>
   </div>
 </template>
@@ -15,4 +15,35 @@
 <style scoped lang="scss">
   @import "../../assets/styles/main";
 
+  .footer {
+    border-top: 3px dotted $color-primary;
+    min-height: $footer-height;
+    padding: 20px 10px;
+
+    .container {
+      @extend .center-content;
+      @include justify-content(space-between);
+      height: 100%;
+      min-height: 40px;
+      font-weight: lighter;
+      color: $color-grey2;
+
+      @include media-breakpoint-down(sm) {
+        @include align-items(flex-start);
+        @include flex-direction(column);
+      }
+    }
+    .copyright,
+    .author {
+      width: 150px;
+    }
+    .copyright,
+    .fact,
+    .author {
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 10px;
+        width: auto;
+      }
+    }
+  }
 </style>

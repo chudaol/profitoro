@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>Search for workouts, rate and select your favorite</h2>
+    <h2 class="title">Search for workouts, rate and select your favorite</h2>
     <div class="form-group">
-      <input class="form-control" type="search" placeholder="Search for workouts">
+      <input class="input" type="search" placeholder="Search for workouts">
     </div>
     <div class="card-columns">
       <div v-for="workout in workouts" class="card">
@@ -62,10 +62,10 @@
 
   .card-columns {
     @include media-breakpoint-only(lg) {
-      column-count: 4;
+      column-count: 3;
     }
     @include media-breakpoint-only(xl) {
-      column-count: 5;
+      column-count: 4;
     }
     p.card-text {
       overflow: hidden;

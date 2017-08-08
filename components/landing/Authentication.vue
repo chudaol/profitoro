@@ -82,22 +82,20 @@
     margin-bottom: 30px;
   }
   .buttons-holder {
-    @include flexbox();
-    @include align-items(center);
+    @extend .center-content;
     @include justify-content(space-between);
 
     @include media-breakpoint-down(md) {
       @include justify-content(center);
       @include flex-direction(column);
-  }
-
+    }
     .button-lp-primary {
       width: 50%;
 
       @include media-breakpoint-down(md) {
         width: 100%;
+      }
     }
-  }
     .or-text {
       font-size: $font-size-medium;
       font-weight: bold;
@@ -105,20 +103,20 @@
       @include media-breakpoint-down(md) {
         margin-top: 20px;
         margin-bottom: 20px;
+      }
     }
-  }
     .anonymous-login {
       position: relative;
       width: 40%;
 
       @include media-breakpoint-down(md) {
         width: 100%;
+      }
     }
-  }
     .button-lp-secondary {
       width: 100%;
       font-size: $font-size-small;
-  }
+    }
     .anonymous-text {
       position: absolute;
       font-weight: lighter;
@@ -126,8 +124,8 @@
 
       @include media-breakpoint-down(md) {
         position: relative;
+      }
     }
-  }
   }
   .button-lp-primary-faded {
     text-transform: none;

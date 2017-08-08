@@ -11,3 +11,19 @@
 .form {
   padding: 40px 0;
 }
+
+.min-full-height {
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+}
+
+.title {
+  font-size: 25px;
+  color: $color-primary;
+}
+
+.container {
+  @include media-breakpoint-down(md) {
+    width: 760px;
+    max-width: 100%;
+  }
+}

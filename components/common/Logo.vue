@@ -14,7 +14,13 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
+
   .logo {
-    max-width: 20%;
+    max-width: 160px;
+
+    @include media-breakpoint-down(md) {
+      max-width: 80px;
+    }
   }
+
 </style>

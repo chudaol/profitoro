@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <h2 class="text-center mb-5">Set your pomodoro timer</h2>
+    <h2 class="title text-center mb-5">Set your pomodoro timer</h2>
     <div class="mt-5 row justify-content-center align-items-center">
-      <div class="col-md-5 col-sm-8">
-        <set-timer :value="config.workingPomodoro" @valueChanged="setWorkingPomodoro"></set-timer>
+      <div class="set-timer-container col-sm-8 col-md-5">
+        <set-timer class="set-timer set-timer-1" :value="config.workingPomodoro" @valueChanged="setWorkingPomodoro"></set-timer>
         <div class="figure-caption">Pomodoro</div>
       </div>
-      <div class="col-md-4 col-sm-8">
-        <set-timer :value="config.longBreak" @valueChanged="setLongBreak"></set-timer>
+      <div class="set-timer-container col-sm-8 col-md-4">
+        <set-timer class="set-timer set-timer-2" :value="config.longBreak" @valueChanged="setLongBreak"></set-timer>
         <div class="figure-caption">Long break</div>
       </div>
-      <div class="col-md-3 col-sm-8">
-        <set-timer :value="config.shortBreak" @valueChanged="setShortBreak"></set-timer>
+      <div class="set-timer-container col-sm-8 col-md-3">
+        <set-timer class="set-timer set-timer-3" :value="config.shortBreak" @valueChanged="setShortBreak"></set-timer>
         <div class="figure-caption">Short break</div>
       </div>
     </div>
@@ -38,6 +38,12 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
+
+  .set-timer-container {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 20px;
+    }
+  }
   .figure-caption {
     text-align: center;
   }

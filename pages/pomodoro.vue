@@ -1,22 +1,20 @@
 <template>
-  <div class="container">
+  <div>
     <header-component></header-component>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-4">
-          <div class="jumbotron text-center">
-            <div class="container">
-              <img class="img-fluid rounded" src="source" alt="Push Ups">
-              <h2>Push-ups</h2>
-              <p class="lead">
-                Description: lorem ipsum
-              </p>
-            </div>
+    <div class="container min-full-height">
+      <div v-show="state !== 0" class="min-full-height col-sm-12 col-md-6 col-lg-4">
+        <div class="jumbotron text-center">
+          <div class="container">
+            <img class="img-fluid rounded" src="source" alt="Push Ups">
+            <h2>Push-ups</h2>
+            <p class="lead">
+              Description: lorem ipsum
+            </p>
           </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-8">
-          <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
-        </div>
+      </div>
+      <div class="countdown-holder min-full-height col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-8' : 'col-md-12']">
+        <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
       </div>
     </div>
     <footer-component></footer-component>

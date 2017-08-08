@@ -1,13 +1,11 @@
 <template>
-  <div class="container text-center">
-    <div class="row justify-content-center">
-      <svg-circle-sector class="col-sm-12 col-md-10 col-lg-6" :angle="angle" :text="text"></svg-circle-sector>
-    </div>
+  <div class="content">
+    <svg-circle-sector class="countdown-timer col-sm-12 col-md-10 col-lg-6" :angle="angle" :text="text"></svg-circle-sector>
     <div class="controls">
       <div class="btn-group" role="group">
-        <button @click="start" type="button" :class="{disabled: state === 0}" class="btn btn-link">Start</button>
-        <button @click="pause" type="button" :class="{disabled: state === 1 || state === 2}" class="btn btn-link">Pause</button>
-        <button @click="stop" type="button" :class="{disabled: state === 2}" class="btn btn-link">Stop</button>
+        <button @click="start" type="button" :class="{disabled: state === 0}" class="btn btn-link"><img :src="playIcon" /></button>
+        <button @click="pause" type="button" :class="{disabled: state === 1 || state === 2}" class="btn btn-link"><img :src="pauseIcon" /></button>
+        <button @click="stop" type="button" :class="{disabled: state === 2}" class="btn btn-link btn-stop"><img :src="stopIcon" /></button>
       </div>
     </div>
   </div>
@@ -30,7 +28,10 @@
         state: STATE.STOPPED,
         startTime: null,
         pauseTime: null,
-        pauseSeconds: 0
+        pauseSeconds: 0,
+        playIcon: require('@/assets/images/play_icon.svg'),
+        pauseIcon: require('@/assets/images/pause_icon.svg'),
+        stopIcon: require('@/assets/images/stop_icon.svg')
       }
     },
     computed: {
@@ -98,7 +99,14 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
-  button {
+
+  .content {
+    @extend .center-content;
+    @include flex-direction(column);
+    width: 100%;
+    height: 60%;
+  }
+  .controls .btn {
     cursor: pointer;
   }
 </style>

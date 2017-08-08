@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="set-timer">
-        <input class="text" type="number" :value="value" @change="onChange">
+    <div class="set-timer-content">
+      <input class="text" type="number" :value="value" @change="onChange">
     </div>
   </div>
 </template>
@@ -17,25 +17,36 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
-  .set-timer {
-    height: 0%;
+
+  .set-timer-content {
     position: relative;
-    background-color: lightgray;
     width: 100%;
     padding-top: 100%;
     border-radius: 50%;
 
     .text {
-      margin: auto;
-      width: 80%;
-      height: 2em;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
       position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      border: 0;
+      width: 40%;
+      height: 2em;
+      background-color: transparent;
+      color: $color-white;
       text-align: center;
       font-size: 1.5em;
     }
+  }
+  .set-timer-1 .set-timer-content {
+    background-color: $color-lp-primary-faded;
+  }
+  .set-timer-2 .set-timer-content {
+    background-color: rgba($color-lp-primary-faded, 0.8);
+  }
+  .set-timer-3 .set-timer-content {
+    background-color: rgba($color-lp-primary-faded, 0.6);
   }
 </style>
