@@ -17,6 +17,9 @@ export default {
   setStatisticsRef (state, value) {
     state.statistiscRef = value
   },
+  setWorkoutsRef (state, value) {
+    state.workoutsRef = value
+  },
   setDisplayName (state, value) {
     state.displayName = value
   }

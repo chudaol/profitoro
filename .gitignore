@@ -12,3 +12,6 @@ dist
 
 # IDE
 .idea
+
+# Stupid mac
+.DS_Store

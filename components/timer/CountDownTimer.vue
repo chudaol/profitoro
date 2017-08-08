@@ -59,7 +59,7 @@
         }
       },
       start () {
-        if (this.state !== STATE.STARTED) {
+        if (this.state !== STATE.STARTED && this.state !== STATE.PAUSED) {
           this.timestamp = this.time
           this.startTime = Date.now()
         }
