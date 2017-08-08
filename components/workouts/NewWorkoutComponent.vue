@@ -46,6 +46,16 @@
         ev.stopPropagation()
         this.reset()
       },
+      reset () {
+        this.name = ''
+        this.description = ''
+        this.pictures = []
+      },
+      onCancel (ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        this.reset()
+      },
       onCreateNew (ev) {
         ev.preventDefault()
         ev.stopPropagation()
