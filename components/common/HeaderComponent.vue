@@ -78,15 +78,6 @@
         position: initial;
       }
     }
-    .navbar-brand {
-      background: white;
-      padding: 30px 10px 15px;
-
-      @include media-breakpoint-down(md) {
-        width: 100px;
-        padding: 10px 0;
-      }
-    }
     .navbar-collapse {
       margin-top: -50px;
 
