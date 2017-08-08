@@ -1,6 +1,6 @@
 <template>
   <div class="circle">
-    <svg class="timer" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
+    <svg class="timer" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
       <circle class="bigCircle" r="100" cx="100" cy="100"></circle>
       <circle class="smallCircle" r="90" cx="100" cy="100"></circle>
       <path class="segment" :d="path"></path>
@@ -58,25 +58,25 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
-  $big-circle-color: gray;
-  $small-circle-color: lightgray;
-  $segment-color: darkgray;
-  $text-color: black;
+
+  .circle {
+    margin: 30px auto;
+    width: auto;
+  }
   .bigCircle {
-    fill: $big-circle-color;
+    fill: $color-red;
   }
   .smallCircle {
-    fill: $small-circle-color;
+    fill: $color-primary;
   }
   .segment {
-    fill: $segment-color;opacity: 0.6;
+    fill: $color-red;
+    opacity: 0.6;
   }
   .text {
-    font-size: 1em;
-    stroke-width: 0;
+    font-weight: lighter;
     opacity: .9;
-    fill: $text-color;
+    fill: $color-white;
     text-anchor: middle;
-    dominant-baseline: central;
   }
 </style>

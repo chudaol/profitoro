@@ -1,23 +1,19 @@
 <template>
   <div>
-    <h2>Add your workout</h2>
+    <h2 class="title">Add your workout</h2>
       <form>
-        <div class="form-group">
-          <input v-model="name" type="text" class="form-control" placeholder="Name it">
-        </div>
-        <div class="form-group">
-          <textarea v-model="description" type="text" class="form-control" placeholder="Describe it"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="imageFile">Add an image</label>
+        <input v-model="name" type="text" class="input" placeholder="Name it">
+        <textarea v-model="description" type="text" class="input" placeholder="Describe it"></textarea>
+        <div class="image-upload">
+          <label class="title" for="imageFile">Add an image</label>
           <input @change="filesChange($event.target.files)" type="file" multiple class="form-control-file" ref="imageFile">
         </div>
         <div class="row">
           <div class="col">
-            <button @click="onCancel" type="submit" class="btn btn-default">Cancel</button>
+            <button @click="onCancel" type="submit" class="button button-primary">Cancel</button>
           </div>
           <div class="col">
-            <button @click="onCreateNew" type="submit" class="btn btn-default">Apply</button>
+            <button @click="onCreateNew" type="submit" class="button button-primary">Apply</button>
           </div>
         </div>
       </form>
@@ -67,4 +63,8 @@
 </script>
 <style scoped lang="scss">
   @import "../../assets/styles/main";
+
+  .image-upload {
+    margin: 40px 0;
+  }
 </style>

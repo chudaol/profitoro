@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div>
     <header-component></header-component>
-    <div>
+    <div class="min-full-height">
       <h1>Statistics</h1>
       <p>Total Pomodoros: {{totalPomodoros}}</p>
     </div>

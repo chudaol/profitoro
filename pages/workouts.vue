@@ -1,11 +1,11 @@
 <template>
-  <div class="container">
+  <div>
     <header-component></header-component>
-    <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-6 col-lg-6">
+    <div class="min-full-height container clearfix">
+      <div class="section-left col-sm-12 col-md-6 col-lg-6 float-left">
         <workouts-component></workouts-component>
       </div>
-      <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="section-right col-sm-12 col-md-6 col-lg-6 float-right">
         <new-workout-component></new-workout-component>
       </div>
     </div>
@@ -28,4 +28,33 @@
 </script>
 <style scoped lang="scss">
   @import "../assets/styles/main";
+
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .section-left {
+    @include media-breakpoint-up(lg) {
+      padding-right: 30px;
+    }
+    @include media-breakpoint-down(md) {
+      padding-left: 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin: 10px 0;
+      padding: 0;
+    }
+  }
+  .section-right {
+    @include media-breakpoint-up(lg) {
+      padding-left: 30px;
+    }
+    @include media-breakpoint-down(md) {
+      padding-right: 0;
+    }
+    @include media-breakpoint-down(sm) {
+      margin: 10px 0;
+      padding: 0;
+    }
+  }
 </style>

@@ -1,12 +1,14 @@
 <template>
-  <div class="container">
+  <div>
     <header-component></header-component>
-    <div class="row justify-content-center">
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <account-settings></account-settings>
-      </div>
-      <div class="col-sm-12 col-md-6 col-lg-8">
-        <pomodoro-timer-settings></pomodoro-timer-settings>
+    <div class="min-full-height container">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-lg-4">
+          <account-settings></account-settings>
+        </div>
+        <div class="col-sm-12 col-lg-8">
+          <pomodoro-timer-settings></pomodoro-timer-settings>
+        </div>
       </div>
     </div>
     <footer-component></footer-component>
@@ -29,7 +31,9 @@
 </script>
 <style scoped lang="scss">
   @import "../assets/styles/main";
-  .figure-caption {
-    text-align: center;
+
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 </style>
