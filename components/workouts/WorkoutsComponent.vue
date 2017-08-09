@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>Search for workouts, rate and select your favorite</h2>
+    <h2>Manage your workouts</h2>
     <div class="form-group">
       <input class="form-control" type="search" placeholder="Search for workouts">
     </div>
     <div class="card-columns">
       <div v-for="workout in workouts" class="card">
-        <img class="card-img-top img-fluid" :src="workout.picture" :alt="workout.name">
+        <img class="card-img-top img-fluid" :src="workout.pictures && workout.pictures.length && workout.pictures[0]" :alt="workout.name">
         <div class="card-block">
           <p class="card-text">{{ workout.name }}</p>
         </div>
@@ -15,45 +15,10 @@
   </div>
 </template>
 <script>
+  import {mapState} from 'vuex'
   export default {
-    data () {
-      return {
-        workouts: [{
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups pushuups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        },
-        {
-          name: 'Pushups',
-          description: 'Just do some pushups',
-          picture: require('~/assets/images/pushups.png')
-        }]
-      }
+    computed: {
+      ...mapState(['workouts'])
     }
   }
 </script>

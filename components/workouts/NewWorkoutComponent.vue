@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
           <label for="imageFile">Add an image</label>
-          <input type="file" multiple class="form-control-file" id="imageFile">
+          <input @change="filesChange($event.target.files)" type="file" multiple class="form-control-file" ref="imageFile">
         </div>
         <div class="row">
           <div class="col">
@@ -35,11 +35,15 @@
       }
     },
     methods: {
-      ...mapActions(['createNewWorkout']),
+      ...mapActions(['createNewWorkout', 'uploadImages']),
+      filesChange (files) {
+        this.pictures = [...files]
+      },
       reset () {
         this.name = ''
         this.description = ''
         this.pictures = []
+        this.$refs.imageFile.value = null
       },
       onCancel (ev) {
         ev.preventDefault()
@@ -49,12 +53,14 @@
       onCreateNew (ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        this.createNewWorkout({
-          name: this.name,
-          description: this.description,
-          pictures: this.pictures
+        this.uploadImages(this.pictures).then(picUrls => {
+          this.createNewWorkout({
+            name: this.name,
+            description: this.description,
+            pictures: picUrls
+          })
+          this.reset()
         })
-        this.reset()
       }
     }
   }
