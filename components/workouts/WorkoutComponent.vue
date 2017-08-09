@@ -9,7 +9,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <img :src="pictures && pictures.length && pictures[0]" class="img-fluid" :alt="name">
+          <div class="text-center">
+            <img :src="pictures && pictures.length && pictures[0]" class="img-fluid" :alt="name">
+          </div>
           <p>{{ description }}</p>
         </div>
         <div class="modal-footer">

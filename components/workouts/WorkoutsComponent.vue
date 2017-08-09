@@ -25,6 +25,7 @@
 <script>
   import {mapState} from 'vuex'
   import WorkoutComponent from './WorkoutComponent'
+  import moment from 'moment'
 
   export default {
     data () {
@@ -48,7 +49,7 @@
         this.name = workout.name
         this.description = workout.description
         this.username = workout.username
-        this.datecreated = workout.date
+        this.datecreated = moment(workout.date).format('MMM Do YY')
         this.rate = workout.rate
         this.pictures = workout.pictures
       }
