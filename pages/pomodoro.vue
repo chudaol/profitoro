@@ -6,10 +6,10 @@
         <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-4">
           <div class="jumbotron text-center">
             <div class="container">
-              <img class="img-fluid rounded" src="source" alt="Push Ups">
-              <h2>Push-ups</h2>
+              <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
+              <h2>{{ chosenWorkout.name }}</h2>
               <p class="lead">
-                Description: lorem ipsum
+                {{ chosenWorkout.description }}
               </p>
             </div>
           </div>
@@ -38,13 +38,15 @@
       return {
         state: STATE.WORKING,
         pomodoros: 0,
-        source: require('~/assets/images/pushups.png')
+        source: require('~/assets/images/pushups.png'),
+        chosenWorkout: {name: '', description: '', picture: ''}
       }
     },
     computed: {
       ...mapGetters({
         config: 'getConfig',
-        totalPomodoros: 'getTotalPomodoros'
+        totalPomodoros: 'getTotalPomodoros',
+        workouts: 'getWorkouts'
       }),
       time () {
         let minutes
@@ -74,6 +76,9 @@
     },
     methods: {
       ...mapActions(['updateTotalPomodoros']),
+      getRandomWorkout () {
+        return this.workouts[Math.floor(Math.random() * this.workouts.length)]
+      },
       togglePomodoro () {
         beep()
         switch (this.state) {
@@ -83,6 +88,8 @@
             this.updateTotalPomodoros(this.totalPomodoros + 1)
             this.state = this.pomodoros % this.config.pomodorosTillLongBreak === 0
               ? STATE.LONG_BREAK : STATE.SHORT_BREAK
+            this.chosenWorkout = this.getRandomWorkout()
+            this.chosenWorkout.picture = this.chosenWorkout.pictures && this.chosenWorkout.pictures.length && this.chosenWorkout.pictures[0]
             break
           default:
             // time to work!
