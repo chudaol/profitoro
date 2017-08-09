@@ -5,20 +5,53 @@
       <input class="input" type="search" placeholder="Search for workouts">
     </div>
     <div class="card-columns">
-      <div v-for="workout in workouts" class="card">
+      <div data-toggle="modal" data-target="#workoutModal" v-for="workout in workouts" class="card" @click="onChosenWorkout(workout)">
         <img class="card-img-top img-fluid" :src="workout.pictures && workout.pictures.length && workout.pictures[0]" :alt="workout.name">
         <div class="card-block">
           <p class="card-text">{{ workout.name }}</p>
         </div>
       </div>
     </div>
+    <workout-component
+      :name="name"
+      :description="description"
+      :username="username"
+      :datecreated="datecreated"
+      :pictures="pictures"
+      :rate="rate">
+    </workout-component>
   </div>
 </template>
 <script>
   import {mapState} from 'vuex'
+  import WorkoutComponent from './WorkoutComponent'
+
   export default {
+    data () {
+      return {
+        name: '',
+        username: '',
+        datecreated: '',
+        description: '',
+        pictures: [],
+        rate: 0
+      }
+    },
     computed: {
       ...mapState(['workouts'])
+    },
+    components: {
+      WorkoutComponent
+    },
+    methods: {
+      onChosenWorkout (workout) {
+        this.name = workout.name
+        this.description = workout.description
+        this.username = workout.username
+        this.datecreated = workout.date
+        this.rate = workout.rate
+        this.pictures = workout.pictures
+      }
     }
   }
 </script>
