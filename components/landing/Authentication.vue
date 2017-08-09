@@ -8,7 +8,7 @@
       </div>
 
       <div class="buttons-holder col-md-12">
-        <button type="button" @click="onAction" class="button button-lp-primary">{{ this.actionButtonText }}</button>
+        <button @click="onAction" class="button button-lp-primary">{{ this.actionButtonText }}</button>
         <span class="or-text">OR</span>
         <div class="anonymous-login">
           <nuxt-link class="button button-lp-secondary" to="pomodoro" tag="button">START WITHOUT REGISTRATION</nuxt-link>

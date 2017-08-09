@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <nav class="navbar navbar-toggleable-md navbar-light">
+      <nav class="navbar navbar-toggleable-md navbar-light row">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,8 +73,6 @@
       @include justify-content(center);
 
       @include media-breakpoint-down(md) {
-        padding-right: 0;
-        padding-left: 0;
         position: initial;
       }
     }

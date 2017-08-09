@@ -103,8 +103,6 @@
   .content {
     @extend .center-content;
     @include flex-direction(column);
-    width: 100%;
-    height: 60%;
   }
   .controls .btn {
     cursor: pointer;
