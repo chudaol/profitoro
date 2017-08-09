@@ -1,14 +1,16 @@
 <template>
-  <div class="circle">
-    <svg class="timer" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-      <circle class="bigCircle" r="100" cx="100" cy="100"></circle>
-      <circle class="smallCircle" r="90" cx="100" cy="100"></circle>
-      <path class="segment" :d="path"></path>
-      <slot></slot>
-      <text v-if="text != ''" class="text" x="100" y="100">
-        {{text}}
-      </text>
-    </svg>
+  <div class="timer-holder">
+    <div class="center-content">
+      <svg class="timer" viewBox="0 0 200 200" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bigCircle" r="100" cx="100" cy="100"></circle>
+        <circle class="smallCircle" r="90" cx="100" cy="100"></circle>
+        <path class="segment" :d="path"></path>
+        <slot></slot>
+        <text v-if="text != ''" class="text" x="100" y="100">
+          {{text}}
+        </text>
+      </svg>
+    </div>
   </div>
 </template>
 <script>
@@ -59,9 +61,15 @@
 <style scoped lang="scss">
   @import "../../assets/styles/main";
 
-  .circle {
+  .timer-holder {
     margin: 30px auto;
-    width: auto;
+    display: table;
+
+    @include media-breakpoint-down(md) {
+      margin-top: 80px;
+      width: 300px;
+      height: 300px;
+    }
   }
   .bigCircle {
     fill: $color-red;
@@ -78,5 +86,15 @@
     opacity: .9;
     fill: $color-white;
     text-anchor: middle;
+  }
+  .timer {
+    width: 400px;
+    height: 400px;
+    display: flex;
+
+    @include media-breakpoint-down(md) {
+      width: 300px;
+      height: 300px;
+    }
   }
 </style>

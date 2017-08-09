@@ -21,6 +21,11 @@
   color: $color-primary;
 }
 
+.main-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .container {
   @include media-breakpoint-down(md) {
     width: 760px;

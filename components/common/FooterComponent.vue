@@ -18,13 +18,13 @@
   .footer {
     border-top: 3px dotted $color-primary;
     min-height: $footer-height;
-    padding: 20px 10px;
+    padding: 15px 10px;
 
     .container {
       @extend .center-content;
       @include justify-content(space-between);
       height: 100%;
-      min-height: 40px;
+      min-height: 30px;
       font-weight: lighter;
       color: $color-grey2;
 

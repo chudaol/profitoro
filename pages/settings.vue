@@ -1,8 +1,8 @@
 <template>
   <div>
     <header-component></header-component>
-    <div class="min-full-height container">
-      <div class="row justify-content-center">
+    <div class="container min-full-height">
+      <div class="main-content row">
         <div class="col-sm-12 col-lg-4">
           <account-settings></account-settings>
         </div>
@@ -31,9 +31,4 @@
 </script>
 <style scoped lang="scss">
   @import "../assets/styles/main";
-
-  .container {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
 </style>

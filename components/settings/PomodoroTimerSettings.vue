@@ -39,6 +39,11 @@
 <style scoped lang="scss">
   @import "../../assets/styles/main";
 
+  .container {
+    @include media-breakpoint-down(sm) {
+      margin-top: 50px;
+    }
+  }
   .set-timer-container {
     @include media-breakpoint-down(sm) {
       margin-bottom: 20px;
