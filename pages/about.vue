@@ -26,6 +26,7 @@
       </p>
       <h4 class="title">Credits</h4>
       <p>Logo creation: Carina</p>
+      <p>Mockups implementation: <a href="https://github.com/Safure">Safi</a></p>
       <p>Design and illustrations: <a href="https://www.behance.net/MeegsyWeegsy">Vanessa</a></p>
       <p>Transforming design into scss and helping with implementation: <a href="https://github.com/fil090302">Filipe</a></p>
       <p>Implementation using Vue, Boostrap and Firebase: <a href="https://github.com/chudaol">Olga</a></p>
