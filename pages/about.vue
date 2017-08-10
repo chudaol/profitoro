@@ -21,6 +21,7 @@
       <p>
         You can also <nuxt-link to="statistics">check your statistics</nuxt-link> along the time you use ProFitOro!
       </p>
+      <h4 class="title">Book</h4>
       <p>
         This application has been developed as a part of the book <a href="https://www.packtpub.com/web-development/web-development-bootstrap-and-vuejs">"Web development using Vue.js, Bootstrap and Firebase"</a>.
       </p>
