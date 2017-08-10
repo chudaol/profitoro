@@ -2,10 +2,10 @@
   <div>
     <h2 class="title">Manage your workouts</h2>
     <div class="form-group">
-      <input class="input" type="search" placeholder="Search for workouts">
+      <input v-model="searchTerm" class="input" type="search" placeholder="Search for workouts">
     </div>
     <div class="card-columns">
-      <div data-toggle="modal" data-target="#workoutModal" v-for="workout in workouts" class="card" @click="onChosenWorkout(workout)">
+      <div data-toggle="modal" data-target="#workoutModal" v-for="workout in workoutsToDisplay" class="card" @click="onChosenWorkout(workout)">
         <img class="card-img-top img-fluid" :src="workout.pictures && workout.pictures.length && workout.pictures[0]" :alt="workout.name">
         <div class="card-block">
           <p class="card-text">{{ workout.name }}</p>
@@ -35,11 +35,21 @@
         datecreated: '',
         description: '',
         pictures: [],
-        rate: 0
+        rate: 0,
+        searchTerm: ''
       }
     },
     computed: {
-      ...mapState(['workouts'])
+      ...mapState(['workouts']),
+      workoutsToDisplay () {
+        return this.workouts.filter(workout => {
+          let name = workout.name.toLowerCase()
+          let description = workout.description.toLowerCase()
+          let username = workout.username.toLowerCase()
+          let term = this.searchTerm.toLowerCase()
+          return name.indexOf(term) >= 0 || description.indexOf(term) >= 0 || username.indexOf(term) >= 0
+        })
+      }
     },
     components: {
       WorkoutComponent
