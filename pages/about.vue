@@ -11,7 +11,7 @@
       <p class="lead">
         Every time your Pomodoro working interval ends, you will be presented with a small workout that you have to perform during the Pomodoro resting period.
       </p>
-      <h4 class="title">There are some advantages to be a registered user:</h4>
+      <h4 class="title">There are some advantages to become a <nuxt-link to="login">registered user</nuxt-link>:</h4>
       <p>
         As a registered user you can <nuxt-link to="settings">configure</nuxt-link> your Pomodoro timing settings.
       </p>
