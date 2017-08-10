@@ -26,7 +26,7 @@
         This application has been developed as a part of the book <a href="https://www.packtpub.com/web-development/web-development-bootstrap-and-vuejs">"Web development using Vue.js, Bootstrap and Firebase"</a>.
       </p>
       <h4 class="title">Credits</h4>
-      <p>Logo creation: Carina</p>
+      <p>Logo creation: <a href="mailto:car.marg@gmail.com">Carina</a></p>
       <p>Mockups implementation: <a href="https://github.com/Safure">Safi</a></p>
       <p>Design and illustrations: <a href="https://www.behance.net/MeegsyWeegsy">Vanessa</a></p>
       <p>Transforming design into scss and helping with implementation: <a href="https://github.com/fil090302">Filipe</a></p>
