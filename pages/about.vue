@@ -11,19 +11,20 @@
       <p class="lead">
         Every time your Pomodoro working interval ends, you will be presented with a small workout that you have to perform during the Pomodoro resting period.
       </p>
-      <p class="lead">
-        You can <nuxt-link to="settings">configure</nuxt-link> your Pomodoro timing settings.
+      <h4 class="title">There are some advantages to be a registered user:</h4>
+      <p>
+        As a registered user you can <nuxt-link to="settings">configure</nuxt-link> your Pomodoro timing settings.
       </p>
-      <p class="lead">
+      <p>
         You can also <nuxt-link to="workouts">manage</nuxt-link> workouts, choosing your favourite ones, rating them and even creating your own workouts that will be displayed to everybody!
       </p>
-      <p class="lead">
+      <p>
         You can also <nuxt-link to="statistics">check your statistics</nuxt-link> along the time you use ProFitOro!
       </p>
       <p>
         This application has been developed as a part of the book <a href="https://www.packtpub.com/web-development/web-development-bootstrap-and-vuejs">"Web development using Vue.js, Bootstrap and Firebase"</a>.
       </p>
-      <h4>Credits</h4>
+      <h4 class="title">Credits</h4>
       <p>Logo creation: Carina</p>
       <p>Design and illustrations: <a href="https://www.behance.net/MeegsyWeegsy">Vanessa</a></p>
       <p>Transforming design into scss and helping with implementation: <a href="https://github.com/fil090302">Filipe</a></p>
