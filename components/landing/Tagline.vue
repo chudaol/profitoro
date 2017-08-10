@@ -1,5 +1,8 @@
 <template>
-  <p class="tagline">Enjoyable application for Office Workouts!</p>
+  <div>
+    <p class="tagline">Take breaks during work. Exercise during breaks.</p>
+    <nuxt-link class="tagline small know-more" tag="p" to="about">Know more </nuxt-link>
+  </div>
 </template>
 <script>
   export default {
@@ -11,6 +14,10 @@
     margin: 0;
     font-weight: lighter;
     letter-spacing: 1px;
+
+    &.know-more {
+      cursor: pointer;
+    }
   }
 </style>
 
