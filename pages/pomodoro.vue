@@ -3,18 +3,24 @@
     <header-component></header-component>
     <div class="container min-full-height">
       <div class="main-content row">
-        <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-4">
-          <div class="jumbotron text-center">
-            <div class="container">
-              <img class="img-fluid rounded" src="source" alt="Push Ups">
-              <h2>Push-ups</h2>
-              <p class="lead">
-                Description: lorem ipsum
-              </p>
+        <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-5">
+          <div class="">
+            <img src="source" alt="Push Ups">
+            <h2 class="title">Push-ups</h2>
+            <p class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div>
+              <button type="button" class="button button-primary">Done!</button>
+              <button type="button" class="button button-primary">Next</button>
+            </div>
+            <div class="lazy-section">
+              <h4 class="title">Feeling <span class="bold">Lazy</span> today?</h4>
+              <button type="button" class="button button-primary-faded">Show me some kittens!</button>
             </div>
           </div>
         </div>
-        <div class="countdown-holder col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-8' : 'col-md-12']">
+        <div class="countdown-holder col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-7' : 'col-md-12']">
           <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
         </div>
       </div>
@@ -96,5 +102,26 @@
 </script>
 <style scoped lang="scss">
   @import "../assets/styles/main";
-</style>
 
+  .description {
+    margin: 20px 0;
+    color: #999;
+  }
+  .button-primary {
+    width: 47.5%;
+    margin: 0;
+
+    &:first-of-type {
+      margin-right: 5%;
+      padding: 0;
+      float: left;
+    }
+  }
+  .lazy-section {
+    margin-top: 40px;
+
+    .title {
+      font-size: $font-size-medium;
+    }
+  }
+</style>

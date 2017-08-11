@@ -10,7 +10,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <button type="submit" class="button button-primary">Cancel</button>
+            <button type="button" class="button button-primary">Cancel</button>
           </div>
           <div class="col">
             <button @click="onCreateNew" type="submit" class="button button-primary">Apply</button>
