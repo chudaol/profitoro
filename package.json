@@ -5,7 +5,9 @@
   "author": "Olga Filipova <chudaol@gmail.com>",
   "private": true,
   "dependencies": {
-    "nuxt": "latest"
+    "moment": "^2.18.1",
+    "nuxt": "latest",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "dev": "nuxt",

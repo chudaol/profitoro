@@ -22,7 +22,7 @@
       return {
         displayName: '',
         email: '',
-        photoURL: 'static/tomato.png',
+        photoURL: require('~/assets/images/tomato.png'),
         showChangeProfilePicInput: false
       }
     },
