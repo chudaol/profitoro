@@ -47,4 +47,16 @@
 </script>
 <style scoped lang="scss">
   @import "../assets/styles/main";
+
+  .container {
+    padding: 30px 15px;
+
+    @include media-breakpoint-up(lg) {
+      padding: 50px 15px;
+      max-width: 800px;
+    }
+  }
+  .title {
+    margin: 30px 0 15px;
+  }
 </style>

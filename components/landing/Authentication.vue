@@ -71,8 +71,10 @@
   @import "../../assets/styles/main";
 
   .loginForm-holder {
-    max-width: 90%;
     margin-top: 100px;
+  }
+  .form-group {
+    padding-right: 0;
   }
   .form-changer {
     padding: 50px 0 20px;
