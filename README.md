@@ -1,6 +1,6 @@
 # profitoro-nuxt
 
-> Nuxt.js project
+> Take breaks during work. Exercise during breaks.
 
 ## Build Setup
 
@@ -20,3 +20,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+
+## Licensing
+
+ProFitOro is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.

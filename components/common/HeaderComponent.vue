@@ -108,6 +108,10 @@
       &:focus {
         color: $color-primary;
       }
+      &.disabled {
+        cursor: default;
+        color: $nav-disabled-link-color;
+      }
     }
     .buttons-holder {
       margin-left: 60px;

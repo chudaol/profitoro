@@ -3,7 +3,7 @@
     <header-component></header-component>
     <div class="container min-full-height">
       <p class="lead">
-        ProFitOro application is a time management application that combines the Pomodoro technique with office workouts.
+        ProFitOro application is a time management application that combines the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro technique</a> with office workouts.
       </p>
       <p class="lead">
         <nuxt-link to="login">Click here to login </nuxt-link> or just <nuxt-link to="pomodoro">start using ProFitOro </nuxt-link>without registration.
@@ -23,7 +23,8 @@
       </p>
       <h4 class="title">Book</h4>
       <p>
-        This application has been developed as a part of the book <a href="https://www.packtpub.com/web-development/web-development-bootstrap-and-vuejs">"Web development using Vue.js, Bootstrap and Firebase"</a>.
+        This application has been developed as a part of the book <a href="https://www.packtpub.com/web-development/web-development-bootstrap-and-vuejs">"Web development using Vue.js, Bootstrap and Firebase"</a>. It is an <a
+        href="https://github.com/chudaol/profitoro">open source project</a> licensed under the Apache License, Version 2.0.
       </p>
       <h4 class="title">Credits</h4>
       <p>Logo creation: <a href="mailto:car.marg@gmail.com">Carina</a></p>

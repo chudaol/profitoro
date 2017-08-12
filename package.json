@@ -1,7 +1,7 @@
 {
-  "name": "profitoro-nuxt",
+  "name": "ProFitOro",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
+  "description": "Take breaks during work. Exercise during breaks.",
   "author": "Olga Filipova <chudaol@gmail.com>",
   "private": true,
   "dependencies": {

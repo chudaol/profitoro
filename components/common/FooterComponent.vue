@@ -1,9 +1,9 @@
 <template>
   <div class="footer">
     <div class="container">
-      <span class="copyright">Copyright</span>
+      <span class="copyright">&copy; 2017 ProFitOro</span>
       <span class="fact">Working out sharpens your memory</span>
-      <span class="author bold">Workout Lovers</span>
+      <span class="author bold"><nuxt-link to="/about">Workout Lovers</nuxt-link></span>
     </div>
   </div>
 </template>
