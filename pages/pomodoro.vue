@@ -96,10 +96,12 @@
               ? STATE.LONG_BREAK : STATE.SHORT_BREAK
             this.chosenWorkout = this.getRandomWorkout()
             this.chosenWorkout.picture = this.chosenWorkout.pictures && this.chosenWorkout.pictures.length && this.chosenWorkout.pictures[0]
+            alert('Time for exercise!')
             break
           default:
             // time to work!
             this.state = STATE.WORKING
+            alert('Time to work!')
             break
         }
         this.$refs.countdowntimer.start()
