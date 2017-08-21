@@ -7,7 +7,7 @@
   export default {
     data () {
       return {
-        src: require('~/assets/profitoro_logo.svg')
+        src: require('../../assets/profitoro_logo.svg')
       }
     }
   }

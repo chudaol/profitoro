@@ -16,6 +16,7 @@ function _uploadImage (file) {
 }
 
 export default {
+  _uploadImage,
   /**
    * Uploads images to the firebase datastore
    * @param state
@@ -23,7 +24,7 @@ export default {
    * @returns {Promise}
    */
   uploadImages ({state}, files) {
-    return Promise.all(files.map(_uploadImage))
+    return Promise.all(files.map(this._uploadImage))
   },
   /**
    * Creates new workout

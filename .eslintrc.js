@@ -3,7 +3,8 @@ module.exports = {
   parser: 'babel-eslint',
   env: {
     browser: true,
-    node: true
+    node: true,
+    jest: true
   },
   extends: 'standard',
   // required to lint *.vue files
