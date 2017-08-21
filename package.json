@@ -16,10 +16,19 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "jest"
+    "test": "NODE_ENV=production jest"
   },
   "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    },
     "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js",
+      "^vue$": "vue/dist/vue.common.js",
+      "^vuex$": "vuex/dist/vuex.common.js",
+      "^~/(components|pages)(.*)$": "<rootDir>/$1/$2.vue",
       "^~(.*)$": "<rootDir>/$1"
     }
   },

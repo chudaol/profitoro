@@ -40,6 +40,7 @@
   import Logo from '~/components/common/Logo'
 
   export default {
+    name: 'header-component',
     computed: {
       ...mapGetters({name: 'getDisplayName', isAuthenticated: 'isAuthenticated'})
     },
