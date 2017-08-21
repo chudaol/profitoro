@@ -5,8 +5,8 @@
   </div>
 </template>
 <script>
-  import login from './login'
-  import pomodoro from './pomodoro'
+  import login from '~/pages/login'
+  import pomodoro from '~/pages/pomodoro'
   import { mapActions, mapState } from 'vuex'
 
   export default {

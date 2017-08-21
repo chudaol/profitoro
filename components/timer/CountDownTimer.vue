@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-  import SvgCircleSector from './SvgCircleSector'
-  import {leftPad, numberOfSecondsFromNow} from '@/utils/utils'
+  import SvgCircleSector from '~/components/timer/SvgCircleSector'
+  import {leftPad, numberOfSecondsFromNow} from '~/utils/utils'
   const STATE = {
     STARTED: 0,
     PAUSED: 1,

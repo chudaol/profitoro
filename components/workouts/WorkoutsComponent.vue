@@ -24,7 +24,7 @@
 </template>
 <script>
   import {mapState} from 'vuex'
-  import WorkoutComponent from './WorkoutComponent'
+  import WorkoutComponent from '~/components/workouts/WorkoutComponent'
   import moment from 'moment'
 
   export default {
