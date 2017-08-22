@@ -1,4 +1,4 @@
-import firebaseApp from '~/firebase'
+import firebaseApp from '~/firebaseapp'
 import { firebaseAction } from 'vuexfire'
 import uuidv1 from 'uuid/v1'
 

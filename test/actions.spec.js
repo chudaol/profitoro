@@ -1,6 +1,6 @@
 import mockFirebaseApp from '~/__mocks__/firebaseAppMock'
 import firebaseMocks from '~/__mocks__/firebaseMocks'
-jest.mock('~/firebase', () => mockFirebaseApp)
+jest.mock('~/firebaseapp', () => mockFirebaseApp)
 
 import actions from '~/store/actions'
 
