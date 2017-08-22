@@ -76,7 +76,7 @@ jobs:
       # run tests!
       - run: npm test
 
-      # deploy to staging!
+      # deploy to production!
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
