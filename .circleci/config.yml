@@ -46,7 +46,7 @@ jobs:
             fi
   deploy:
    docker:
-        - image: circleci/node:7.10
+     - image: circleci/node:7.10
 
     working_directory: ~/repo
 
