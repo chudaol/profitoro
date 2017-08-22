@@ -36,4 +36,12 @@ jobs:
       # run tests!
       - run: npm test
 
+      # deploy!
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm run generate
+              firebase deploy --token=$FIREBASE_TOKEN --non-interactive
+            fi
+
 
