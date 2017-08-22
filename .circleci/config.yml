@@ -52,7 +52,7 @@ jobs:
     steps:
 
       - attach_workspace:
-              at: /repo
+              at: ~/repo
 
       # deploy to production!
       - deploy:
