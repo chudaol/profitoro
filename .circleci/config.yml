@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  stage:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -80,13 +80,13 @@ jobs:
             fi
 workflows:
   version: 2
-  stage-and-approval-deploy:
+  build-and-approval-deploy:
     jobs:
-      - stage
+      - build
       - hold:
          type: approval
          requires:
-           - stage
+           - build
       - deploy:
           requires:
             - hold
