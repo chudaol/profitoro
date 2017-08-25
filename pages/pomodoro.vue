@@ -4,20 +4,23 @@
     <div class="container min-full-height">
       <div class="main-content row">
         <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-5">
-          <div>
+          <div v-if="!showKittens">
             <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
             <h2 class="title">{{ chosenWorkout.name }}</h2>
             <p class="description">
               {{ chosenWorkout.description }}
             </p>
           </div>
-          <div>
+          <div v-if="showKittens">
+            <kittens-component></kittens-component>
+          </div>
+          <div v-if="!showKittens">
             <button type="button" class="button button-primary">Done!</button>
             <button type="button" class="button button-primary">Next</button>
           </div>
           <div class="lazy-section">
-            <h4 class="title">Feeling <span class="bold">Lazy</span> today?</h4>
-            <button type="button" class="button button-primary-faded">Show me some kittens!</button>
+            <h4 class="title">Feeling <span class="bold">{{ showKittens ? 'energetic' : 'lazy' }}</span>?</h4>
+            <button type="button" class="button button-primary-faded" @click="toggleKittens">{{ showKittens ? showWorkoutsButtonText : showKittensButtonText }}</button>
           </div>
         </div>
         <div class="countdown-holder col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-7' : 'col-md-12']">
@@ -30,6 +33,7 @@
 </template>
 <script>
   import CountDownTimer from '~/components/timer/CountDownTimer'
+  import KittensComponent from '~/components/timer/KittensComponent'
   import { HeaderComponent, FooterComponent } from '~/components/common'
   import { mapGetters, mapActions } from 'vuex'
   import { beep } from '~/utils/utils'
@@ -45,7 +49,10 @@
         state: STATE.WORKING,
         pomodoros: 0,
         source: require('~/assets/images/pushups.png'),
-        chosenWorkout: {name: '', description: '', picture: ''}
+        chosenWorkout: {name: '', description: '', picture: ''},
+        showKittens: false,
+        showKittensButtonText: 'Show me some kittens!',
+        showWorkoutsButtonText: 'I wanna exercise!'
       }
     },
     computed: {
@@ -78,7 +85,8 @@
     components: {
       FooterComponent,
       HeaderComponent,
-      CountDownTimer
+      CountDownTimer,
+      KittensComponent
     },
     methods: {
       ...mapActions(['updateTotalPomodoros']),
@@ -105,6 +113,9 @@
             break
         }
         this.$refs.countdowntimer.start()
+      },
+      toggleKittens () {
+        this.showKittens = !this.showKittens
       }
     }
   }
