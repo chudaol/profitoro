@@ -184,7 +184,11 @@ export default {
     firebaseApp.auth().onAuthStateChanged(user => {
       commit('setUser', user)
       if (user && !user.isAnonymous) {
-        commit('setDisplayName', user.displayName)
+        let displayName = user.displayName || user.email.split('@')[0]
+        if (!user.displayName) {
+          dispatch('updateUserName', displayName)
+        }
+        commit('setDisplayName', displayName)
         dispatch('bindFirebaseReferences', user)
       }
       if (!user) {
