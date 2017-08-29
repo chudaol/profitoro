@@ -37,10 +37,14 @@
     methods: {
       ...mapActions(['updateUserName', 'updateUserEmail', 'updatePhotoURL']),
       onChangeUserName () {
-        this.updateUserName(this.displayName)
+        if (this.displayName.length > 0) {
+          this.updateUserName(this.displayName)
+        }
       },
       onChangeUserEmail () {
-        this.updateUserEmail(this.email)
+        if (this.email.length > 0) {
+          this.updateUserEmail(this.email)
+        }
       },
       onChangeProfilePic () {
         this.showChangeProfilePicInput = true
