@@ -49,14 +49,16 @@
       onCreateNew (ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        this.uploadImages(this.pictures).then(picUrls => {
-          this.createNewWorkout({
-            name: this.name,
-            description: this.description,
-            pictures: picUrls
+        if (this.name.length > 0 && this.description.length > 0 && this.pictures.length > 0) {
+          this.uploadImages(this.pictures).then(picUrls => {
+            this.createNewWorkout({
+              name: this.name,
+              description: this.description,
+              pictures: picUrls
+            })
+            this.reset()
           })
-          this.reset()
-        })
+        }
       }
     }
   }
