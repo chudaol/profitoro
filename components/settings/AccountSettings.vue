@@ -4,9 +4,9 @@
     <form>
       <div class="form-group">
         <figure class="figure">
-          <img class="img-thumbnail" :src="photoURL" alt="Avatar">
-          <figcaption class="figure-caption" @click="onChangeProfilePic">Change profile picture</figcaption>
-          <input v-show="showChangeProfilePicInput" type="text" v-model="photoURL" @change="onProfilePicChanged">
+          <img @click="onClick" class="img-thumbnail" :src="photoURL" alt="Avatar">
+          <figcaption class="figure-caption" @click="onClick">Change profile picture</figcaption>
+          <input class="invisible" @change="onChangeProfilePicture($event.target.files)" type="file" ref="imageFile">
         </figure>
       </div>
       <input class="input rounded-0" @change="onChangeUserName" v-model="displayName" type="text" placeholder="Change your username">
@@ -35,7 +35,7 @@
       this.photoURL = this.user.photoURL ? this.user.photoURL : this.photoURL
     },
     methods: {
-      ...mapActions(['updateUserName', 'updateUserEmail', 'updatePhotoURL']),
+      ...mapActions(['updateUserName', 'updateUserEmail', 'updatePhotoURL', 'uploadImages']),
       onChangeUserName () {
         if (this.displayName.length > 0) {
           this.updateUserName(this.displayName)
@@ -46,12 +46,20 @@
           this.updateUserEmail(this.email)
         }
       },
-      onChangeProfilePic () {
-        this.showChangeProfilePicInput = true
+      onChangeProfilePicture (files) {
+        this.uploadImages([...files]).then(picUrls => {
+          this.photoURL = picUrls[0]
+          this.updatePhotoURL(this.photoURL)
+          this.$refs.imageFile.value = null
+        })
       },
-      onProfilePicChanged () {
-        this.updatePhotoURL(this.photoURL)
-        this.showChangeProfilePicInput = false
+      onClick () {
+        let clickEvent = new MouseEvent('click', {
+          'view': window,
+          'bubbles': true,
+          'cancelable': true
+        })
+        this.$refs.imageFile.dispatchEvent(clickEvent)
       }
     }
   }
@@ -62,6 +70,7 @@
   img {
     margin-top: 20px;
     max-width: 200px;
+    cursor: pointer;
   }
   figcaption {
     cursor: pointer;

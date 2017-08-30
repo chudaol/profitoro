@@ -24,7 +24,7 @@ export default {
    * @returns {Promise}
    */
   uploadImages ({state}, files) {
-    return Promise.all(files.map(this._uploadImage))
+    return Promise.all(files.map(_uploadImage))
   },
   /**
    * Creates new workout
