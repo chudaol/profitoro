@@ -10,10 +10,10 @@
         </div>
         <div class="row">
           <div class="col">
-            <button @click="onCancel" type="button" class="button button-primary">Cancel</button>
+            <button v-show="!isCreating" @click="onCancel" type="button" class="button button-primary">Cancel</button>
           </div>
           <div class="col">
-            <button @click="onCreateNew" type="submit" class="button button-primary">Apply</button>
+            <button v-show="!isCreating" @click="onCreateNew" type="submit" class="button button-primary">Apply</button>
           </div>
         </div>
       </form>
@@ -27,7 +27,8 @@
       return {
         name: '',
         description: '',
-        pictures: []
+        pictures: [],
+        isCreating: false
       }
     },
     methods: {
@@ -47,6 +48,7 @@
         this.reset()
       },
       onCreateNew (ev) {
+        this.isCreating = true
         ev.preventDefault()
         ev.stopPropagation()
         if (this.name.length > 0 && this.description.length > 0 && this.pictures.length > 0) {
@@ -55,9 +57,13 @@
               name: this.name,
               description: this.description,
               pictures: picUrls
+            }).then(() => {
+              this.reset()
+              this.isCreating = false
             })
-            this.reset()
           })
+        } else {
+          this.isCreating = false
         }
       }
     }
