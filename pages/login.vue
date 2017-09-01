@@ -24,6 +24,10 @@
   @import "../assets/styles/main";
 
   .landingPage {
+    background-image: url("~static/background.png");
+    background-size: auto 98%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
     min-height: 100vh;
     background-color: $color-lp-bg;
     color: $color-white;
