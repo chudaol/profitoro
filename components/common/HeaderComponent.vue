@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <nav class="navbar navbar-toggleable-md navbar-light row">
+      <nav class="navbar navbar-expand-lg navbar-light row">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,24 +11,24 @@
         <div class="collapse navbar-collapse" id="navbarHeader">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="/">Home </nuxt-link>
+              <nuxt-link class="nav-link profitoro-link" to="/">Home </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="about">About </nuxt-link>
+              <nuxt-link class="nav-link profitoro-link" to="about">About </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="settings">Settings </nuxt-link>
+              <nuxt-link class="nav-link profitoro-link" :class="{disabled:!isAuthenticated}" to="settings">Settings </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="statistics">Statistics </nuxt-link>
+              <nuxt-link class="nav-link profitoro-link" :class="{disabled:!isAuthenticated}" to="statistics">Statistics </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" :class="{disabled:!isAuthenticated}" to="workouts">Workouts </nuxt-link>
+              <nuxt-link class="nav-link profitoro-link" :class="{disabled:!isAuthenticated}" to="workouts">Workouts </nuxt-link>
             </li>
           </ul>
           <form class="buttons-holder">
-            <span v-if="isAuthenticated" class="nav-link" @click="onLogout">Logout</span>
-            <span v-if="!isAuthenticated" class="nav-link" @click="onLogout">Go to the start page</span>
+            <span v-if="isAuthenticated" class="nav-link profitoro-link" @click="onLogout">Logout</span>
+            <span v-if="!isAuthenticated" class="nav-link profitoro-link" @click="onLogout">Go to the start page</span>
           </form>
         </div>
       </nav>
@@ -96,7 +96,7 @@
     .nuxt-link-active {
       font-weight: bold;
     }
-    .nav-link {
+    .nav-link.profitoro-link {
       color: rgba($color-primary, 0.7);
       cursor: pointer;
 
@@ -111,7 +111,7 @@
       }
       &.disabled {
         cursor: default;
-        color: $nav-disabled-link-color;
+        color: $nav-link-disabled-color;
       }
     }
     .buttons-holder {
