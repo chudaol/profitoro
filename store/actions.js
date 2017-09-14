@@ -108,6 +108,13 @@ export default {
     state.statisticsRef.update({totalPomodoros: totalPomodoros})
   },
   /**
+   * Increments the total pomodoro number
+   * @param {object} store
+   */
+  incrementTotalPomodoros ({state}) {
+    state.statisticsRef.update({totalPomodoros: state.statistics.totalPomodoros + 1})
+  },
+  /**
    * Creates a new user with given email and password and stores it in the firebase database
    * @param {object} store
    * @param {object} email and password

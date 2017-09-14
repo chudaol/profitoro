@@ -4,6 +4,7 @@ import state from './state'
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
+import pomodoro from './modules/pomodoro'
 import { firebaseMutations } from 'vuexfire'
 Vue.use(Vuex)
 
@@ -16,5 +17,8 @@ export default () => new Vuex.Store({
     ...mutations,
     ...firebaseMutations
   },
-  actions
+  actions,
+  modules: {
+    pomodoro
+  }
 })

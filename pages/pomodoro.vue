@@ -3,28 +3,28 @@
     <header-component></header-component>
     <div class="container min-full-height">
       <div class="main-content row">
-        <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-5">
-          <div v-if="!showKittens">
-            <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
-            <h2 class="title">{{ chosenWorkout.name }}</h2>
+        <div v-show="currentPomodoroState !== pomodoroState.WORKING" class="col-sm-12 col-md-6 col-lg-5">
+          <div v-if="!kittens">
+            <img class="img-fluid rounded" :src="workout.picture" :alt="workout.name">
+            <h2 class="title">{{ workout.name }}</h2>
             <p class="description">
-              {{ chosenWorkout.description }}
+              {{ workout.description }}
             </p>
           </div>
-          <div v-if="showKittens">
+          <div v-if="kittens">
             <kittens-component></kittens-component>
           </div>
-          <div v-if="!showKittens">
+          <div v-if="!kittens">
             <button type="button" class="button button-primary">Done!</button>
             <button type="button" class="button button-primary">Next</button>
           </div>
           <div class="lazy-section">
-            <h4 class="title">Feeling <span class="bold">{{ showKittens ? 'energetic' : 'lazy' }}</span>?</h4>
-            <button type="button" class="button button-primary-faded" @click="toggleKittens">{{ showKittens ? showWorkoutsButtonText : showKittensButtonText }}</button>
+            <h4 class="title">Feeling <span class="bold">{{ kittens ? 'energetic' : 'lazy' }}</span>?</h4>
+            <button type="button" class="button button-primary-faded" @click="toggleKittens">{{ kittens ? showWorkoutsButtonText : showKittensButtonText }}</button>
           </div>
         </div>
-        <div class="countdown-holder col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-7' : 'col-md-12']">
-          <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
+        <div class="countdown-holder col-sm-12" v-bind:class="[currentPomodoroState !== pomodoroState.WORKING ? 'col-md-6 col-lg-7' : 'col-md-12']">
+          <count-down-timer ref="countdowntimer" @finished="onTimerFinished" :time="time"></count-down-timer>
         </div>
       </div>
     </div>
@@ -38,49 +38,15 @@
   import { mapGetters, mapActions } from 'vuex'
   import { beep } from '~/utils/utils'
 
-  const STATE = {
-    WORKING: 0,
-    SHORT_BREAK: 1,
-    LONG_BREAK: 2
-  }
   export default {
     data () {
       return {
-        state: STATE.WORKING,
-        pomodoros: 0,
-        source: require('~/assets/images/pushups.png'),
-        chosenWorkout: {name: '', description: '', picture: ''},
-        showKittens: false,
         showKittensButtonText: 'Show me some kittens!',
         showWorkoutsButtonText: 'I wanna exercise!'
       }
     },
     computed: {
-      ...mapGetters({
-        config: 'getConfig',
-        totalPomodoros: 'getTotalPomodoros',
-        workouts: 'getWorkouts'
-      }),
-      time () {
-        let minutes
-
-        switch (this.state) {
-          case STATE.WORKING:
-            minutes = this.config.workingPomodoro
-            break
-          case STATE.SHORT_BREAK:
-            minutes = this.config.shortBreak
-            break
-          case STATE.LONG_BREAK:
-            minutes = this.config.longBreak
-            break
-          default:
-            minutes = this.config.workingPomodoro
-            break
-        }
-
-        return minutes * 60
-      }
+      ...mapGetters('pomodoro', ['kittens', 'pomodoroState', 'currentPomodoroState', 'workout', 'time'])
     },
     components: {
       FooterComponent,
@@ -89,33 +55,11 @@
       KittensComponent
     },
     methods: {
-      ...mapActions(['updateTotalPomodoros']),
-      getRandomWorkout () {
-        return this.workouts[Math.floor(Math.random() * this.workouts.length)]
-      },
-      togglePomodoro () {
+      ...mapActions('pomodoro', ['toggleKittens', 'togglePomodoro']),
+      onTimerFinished () {
         beep()
-        switch (this.state) {
-          case STATE.WORKING:
-            // we have switched to the break state, increase the number of pomodoros and choose between long and short break
-            this.pomodoros ++
-            this.updateTotalPomodoros(this.totalPomodoros + 1)
-            this.state = this.pomodoros % this.config.pomodorosTillLongBreak === 0
-              ? STATE.LONG_BREAK : STATE.SHORT_BREAK
-            this.chosenWorkout = this.getRandomWorkout()
-            this.chosenWorkout.picture = this.chosenWorkout.pictures && this.chosenWorkout.pictures.length && this.chosenWorkout.pictures[0]
-            alert('Time for exercise!')
-            break
-          default:
-            // time to work!
-            this.state = STATE.WORKING
-            alert('Time to work!')
-            break
-        }
+        this.togglePomodoro()
         this.$refs.countdowntimer.start()
-      },
-      toggleKittens () {
-        this.showKittens = !this.showKittens
       }
     }
   }
