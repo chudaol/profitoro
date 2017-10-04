@@ -63,8 +63,9 @@
       }
     },
     methods: {
-      ...mapActions(['createUser', 'authenticate', 'authenticateAnonymous']),
+      ...mapActions(['createUser', 'authenticate', 'authenticateAnonymous', 'resetAuthError']),
       onSwitch () {
+        this.resetAuthError()
         this.isLogin = !this.isLogin
       },
       onAction (ev) {

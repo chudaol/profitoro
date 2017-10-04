@@ -168,6 +168,13 @@ export default {
     })
   },
   /**
+   * Resets authentication error
+   * @param commit
+   */
+  resetAuthError ({commit}) {
+    commit('setAuthError', '')
+  },
+  /**
    * Authenticates anonymous user
    * @param {object} store
    */
