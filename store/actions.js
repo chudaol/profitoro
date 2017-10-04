@@ -193,9 +193,20 @@ export default {
       }
       if (!user) {
         dispatch('unbindFirebaseReferences')
+        dispatch('bindWorkouts')
       }
     })
   },
+  /**
+   * Binds Workouts reference
+   */
+  bindWorkouts: firebaseAction(({commit, dispatch}) => {
+    let db = firebaseApp.database()
+    let workoutsRef = db.ref('/workouts')
+    dispatch('bindFirebaseReference', {reference: workoutsRef, toBind: 'workouts'}).then(() => {
+      commit('setWorkoutsRef', workoutsRef)
+    })
+  }),
   /**
    * Binds firebase configuration and statistics database references to the store's corresponding objects
    * @param {object} store
@@ -204,16 +215,12 @@ export default {
     let db = firebaseApp.database()
     let configRef = db.ref(`/configuration/${user.uid}`)
     let statisticsRef = db.ref(`/statistics/${user.uid}`)
-    let workoutsRef = db.ref('/workouts')
 
     dispatch('bindFirebaseReference', {reference: configRef, toBind: 'config'}).then(() => {
       commit('setConfigRef', configRef)
     })
     dispatch('bindFirebaseReference', {reference: statisticsRef, toBind: 'statistics'}).then(() => {
       commit('setStatisticsRef', statisticsRef)
-    })
-    dispatch('bindFirebaseReference', {reference: workoutsRef, toBind: 'workouts'}).then(() => {
-      commit('setWorkoutsRef', workoutsRef)
     })
   }),
   /**

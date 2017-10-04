@@ -12,7 +12,7 @@
   export default {
     components: {login, pomodoro},
     methods: {
-      ...mapActions(['bindAuth'])
+      ...mapActions(['bindAuth', 'bindWorkouts'])
     },
     computed: {
       ...mapState(['user']),
@@ -21,6 +21,7 @@
       }
     },
     created () {
+      this.bindWorkouts()
       this.bindAuth()
     }
   }

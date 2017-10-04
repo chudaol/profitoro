@@ -59,7 +59,8 @@
       ...mapGetters({
         config: 'getConfig',
         totalPomodoros: 'getTotalPomodoros',
-        workouts: 'getWorkouts'
+        workouts: 'getWorkouts',
+        authenticated: 'isAuthenticated'
       }),
       time () {
         let minutes
@@ -99,7 +100,9 @@
           case STATE.WORKING:
             // we have switched to the break state, increase the number of pomodoros and choose between long and short break
             this.pomodoros ++
-            this.updateTotalPomodoros(this.totalPomodoros + 1)
+            if (this.authenticated) {
+              this.updateTotalPomodoros(this.totalPomodoros + 1)
+            }
             this.state = this.pomodoros % this.config.pomodorosTillLongBreak === 0
               ? STATE.LONG_BREAK : STATE.SHORT_BREAK
             this.chosenWorkout = this.getRandomWorkout()

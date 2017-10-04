@@ -19,7 +19,10 @@ export default {
     return {
       ref: function () {
         return {
-          update: firebaseMocks.update
+          update: firebaseMocks.update,
+          once: function () {
+            return Promise.resolve()
+          }
         }
       }
     }
