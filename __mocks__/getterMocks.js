@@ -21,5 +21,8 @@ export default {
   },
   isAuthenticated: () => {
     return false
+  },
+  authError: () => {
+    return ''
   }
 }

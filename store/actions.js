@@ -1,5 +1,5 @@
 import firebaseApp from '~/firebaseapp'
-import { firebaseAction } from 'vuexfire'
+import {firebaseAction} from 'vuexfire'
 import uuidv1 from 'uuid/v1'
 
 /**
@@ -112,11 +112,14 @@ export default {
    * @param {object} store
    * @param {object} email and password
    */
-  createUser ({state}, {email, password}) {
+  createUser ({commit}, {email, password}) {
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-    .catch(error => {
-      console.log(error.code, error.message)
-    })
+      .then(() => {
+        commit('setAuthError', '')
+      })
+      .catch(error => {
+        commit('setAuthError', error.message)
+      })
   },
   /**
    * Updates user display name
@@ -157,8 +160,12 @@ export default {
    * @param {object} store
    * @param {object} email and password
    */
-  authenticate ({state, dispatch}, {email, password}) {
-    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+  authenticate ({state, commit}, {email, password}) {
+    firebaseApp.auth().signInWithEmailAndPassword(email, password).then(() => {
+      commit('setAuthError', '')
+    }).catch(err => {
+      commit('setAuthError', err.message)
+    })
   },
   /**
    * Authenticates anonymous user

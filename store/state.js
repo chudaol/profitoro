@@ -30,5 +30,6 @@ export default {
   workoutsRef,
   statistics,
   displayName,
-  workouts: []
+  workouts: [],
+  authError: ''
 }

@@ -1,10 +1,16 @@
 <template>
   <div class="loginForm-holder">
-    <div>{{ titleText }}</div>
+    <div>{{ this.titleText }}</div>
     <form class="form row">
       <div class="col-md-12 col-lg-6 form-group">
         <input class="input white" v-model="email" type="email" placeholder="username or email address" />
         <input class="input white" v-model="password" type="password" placeholder="password" />
+        <div v-show="this.authError !== ''" class="border-0 alert alert-danger alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong>:( </strong> {{ this.errorText }}
+        </div>
       </div>
 
       <div class="buttons-holder col-md-12">
@@ -23,7 +29,7 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
 
   let TITLE_TEXT = {
     LOGIN: 'Already a member? Log in here!',
@@ -42,6 +48,7 @@
       }
     },
     computed: {
+      ...mapGetters(['authError']),
       titleText () {
         return this.isLogin ? TITLE_TEXT.LOGIN : TITLE_TEXT.SIGNUP
       },
@@ -50,6 +57,9 @@
       },
       actionButtonText () {
         return this.isLogin ? ACTION_BUTTON_TEXT.LOGIN : ACTION_BUTTON_TEXT.SIGNUP
+      },
+      errorText () {
+        return this.isLogin ? 'LOGIN: ' + this.authError : 'SIGNUP: ' + this.authError
       }
     },
     methods: {
@@ -132,6 +142,9 @@
   .button-lp-primary-faded {
     text-transform: none;
     font-weight: normal;
+  }
+  .border-0 {
+    border-radius: 0!important;
   }
 
 </style>

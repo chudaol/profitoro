@@ -22,5 +22,8 @@ export default {
   },
   setDisplayName (state, value) {
     state.displayName = value
+  },
+  setAuthError (state, value) {
+    state.authError = value
   }
 }
