@@ -71,6 +71,9 @@
   @import "../../assets/styles/vendors/bootstrap/variables";
   @import "../../assets/styles/vendors/bootstrap/mixins";
   .card-columns {
+    .card {
+      cursor: pointer;
+    }
     @include media-breakpoint-only(lg) {
       column-count: 3;
     }

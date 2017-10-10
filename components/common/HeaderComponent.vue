@@ -2,12 +2,12 @@
   <header class="header">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light row">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="navbar-brand">
           <logo></logo>
         </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarHeader">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -73,30 +73,8 @@
       min-height: $header-md-height;
       background-color: $color-white;
     }
-    .container,
-    .navbar {
+    .container {
       height: 100%;
-    }
-    .navbar {
-      @include flexbox();
-      @include justify-content(center);
-
-      @include media-breakpoint-down(md) {
-        position: initial;
-      }
-    }
-    .navbar-collapse {
-      margin-top: -50px;
-
-      @include media-breakpoint-down(md) {
-        z-index: 20;
-        position: absolute;
-        top: $header-md-height + 50px;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        background-color: $color-white;
-      }
     }
     .nuxt-link-active {
       font-weight: bold;

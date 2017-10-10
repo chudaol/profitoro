@@ -5,5 +5,6 @@ export default {
   getWorkouts: state => state.workouts,
   getTotalPomodoros: state => state.statistics.totalPomodoros,
   isAuthenticated: state => state.user && !state.user.isAnonymous,
-  authError: state => state.authError
+  authError: state => state.authError,
+  totalPomodoros: state => state.statistics.totalPomodoros
 }
