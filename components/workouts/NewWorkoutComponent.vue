@@ -70,8 +70,6 @@
   }
 </script>
 <style scoped lang="scss">
-  @import "../../assets/styles/main";
-
   .image-upload {
     margin: 40px 0;
   }

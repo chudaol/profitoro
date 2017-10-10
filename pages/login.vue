@@ -21,7 +21,7 @@
   }
 </script>
 <style scoped lang="scss">
-  @import "../assets/styles/main";
+  @import "../assets/styles/base/colors";
 
   .landingPage {
     background-image: url("~static/background.png");

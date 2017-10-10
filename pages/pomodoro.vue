@@ -124,7 +124,7 @@
   }
 </script>
 <style scoped lang="scss">
-  @import "../assets/styles/main";
+  @import "../assets/styles/base/fontSizes";
 
   .title {
     margin: 10px 0;

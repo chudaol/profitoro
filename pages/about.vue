@@ -47,7 +47,9 @@
   }
 </script>
 <style scoped lang="scss">
-  @import "../assets/styles/main";
+  @import "../assets/styles/vendors/bootstrap/functions";
+  @import "../assets/styles/vendors/bootstrap/variables";
+  @import "../assets/styles/vendors/bootstrap/mixins/breakpoints";
 
   .container {
     padding: 30px 15px;

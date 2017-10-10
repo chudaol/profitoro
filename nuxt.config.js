@@ -1,4 +1,5 @@
 module.exports = {
+  css: ['~/assets/styles/main.scss'],
   /*
   ** Headers of the page
   */
@@ -15,8 +16,7 @@ module.exports = {
       { hid: 'ogdescription', property: 'og:description', name: 'og:description', content: 'ProFitOro is a Pomodoro timer implementation combined with office workouts. Take breaks during work. Exercise during breaks ' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'stylesheet', lang: 'scss', href: '~/assets/styles/main.scss' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
       { type: 'text/javascript', src: '/jquery.js' },
@@ -24,10 +24,6 @@ module.exports = {
       { type: 'text/javascript', src: '/bootstrap.js' }
     ]
   },
-  css: [
-    '~static/bootstrap.css',
-    '~static/main.css'
-  ],
   /*
   ** Customize the progress-bar color
   */

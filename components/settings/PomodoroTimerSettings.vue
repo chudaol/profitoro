@@ -36,8 +36,10 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  @import "../../assets/styles/main";
+<style lang="scss">
+  @import "../../assets/styles/vendors/bootstrap/functions";
+  @import "../../assets/styles/vendors/bootstrap/variables";
+  @import "../../assets/styles/vendors/bootstrap/mixins";
 
   .container {
     @include media-breakpoint-down(sm) {

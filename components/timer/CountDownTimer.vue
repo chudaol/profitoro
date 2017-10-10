@@ -97,9 +97,9 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  @import "../../assets/styles/main";
-
+<style lang="scss">
+  @import "../../assets/styles/vendors/flex";
+  @import "../../assets/styles/utils/module";
   .content {
     @extend .center-content;
     @include flex-direction(column);

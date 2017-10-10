@@ -65,8 +65,6 @@
   }
 </script>
 <style scoped lang="scss">
-  @import "../../assets/styles/main";
-
   img {
     margin-top: 20px;
     max-width: 200px;

@@ -56,8 +56,13 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  @import "../../assets/styles/main";
+<style lang="scss">
+  @import "../../assets/styles/base/colors";
+  @import "../../assets/styles/base/variables";
+  @import "../../assets/styles/vendors/flex";
+  @import "../../assets/styles/vendors/bootstrap/functions";
+  @import "../../assets/styles/vendors/bootstrap/variables";
+  @import "../../assets/styles/vendors/bootstrap/mixins";
 
   .header {
     height: $header-height;

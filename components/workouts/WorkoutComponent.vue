@@ -26,6 +26,3 @@
     props: ['name', 'description', 'username', 'datecreated', 'rate', 'pictures']
   }
 </script>
-<style scoped lang="scss">
-
-</style>

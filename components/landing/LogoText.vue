@@ -6,9 +6,8 @@
 
   }
 </script>
-<style scoped lang="scss">
-  @import "../../assets/styles/main";
-
+<style lang="scss">
+  @import "../../assets/styles/base/fontSizes";
   .logo-text {
     margin: 0;
     line-height: 60px;
