@@ -34,10 +34,36 @@ export default {
   authError: '',
   todos: [
     {
-      description: 'aaaa',
+      description: 'todo 1',
       id: 1,
-      priority: 'high',
+      priority: 1,
       active: true
+    },
+    {
+      description: 'todo 2',
+      id: 2,
+      priority: 3,
+      active: true
+    },
+    {
+      description: 'todo 3',
+      id: 3,
+      priority: 2,
+      active: true
+    },
+    {
+      description: 'todo 4',
+      id: 4,
+      priority: 1,
+      active: false,
+      pomodoros: 3
+    },
+    {
+      description: 'todo 5',
+      id: 5,
+      priority: 1,
+      active: false,
+      pomodoros: 5
     }
   ]
 }

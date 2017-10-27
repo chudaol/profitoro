@@ -24,5 +24,11 @@ export default {
   },
   authError: () => {
     return ''
+  },
+  activeTodos: () => {
+    return []
+  },
+  doneTodos: () => {
+    return []
   }
 }

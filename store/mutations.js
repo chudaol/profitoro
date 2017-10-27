@@ -30,5 +30,11 @@ export default {
   },
   markAsDone (state, todoId) {
     _.find(state.todos, todo => todo.id === todoId).active = false
+  },
+  setToDoPomodoros (state, {id, pomodoros}) {
+    _.find(state.todos, todo => todo.id === id).pomodoros = pomodoros
+  },
+  addTodo (state, todo) {
+    state.todos.push(todo)
   }
 }
