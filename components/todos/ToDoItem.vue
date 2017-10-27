@@ -1,5 +1,6 @@
 <template>
   <a href="#" :class="className" @click="toggleDone">
+    <input type="checkbox" :checked="!active" :disabled="!active">
     {{ description }}
     <span
       v-if="active === false"
@@ -40,3 +41,8 @@
     }
   }
 </script>
+<style scoped>
+  a.list-group-item-success {
+    text-decoration: line-through;
+  }
+</style>
