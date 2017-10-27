@@ -280,5 +280,8 @@ export default {
     todo.id = uuidv1()
     todo.pomodoros = null
     commit('addTodo', todo)
+  },
+  clearDoneTodos ({ commit, getters }) {
+    commit('clearToDos', getters.doneTodos)
   }
 }

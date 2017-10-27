@@ -34,36 +34,25 @@ export default {
   authError: '',
   todos: [
     {
-      description: 'todo 1',
+      description: 'High priority - learn how to use the ToDo list - mark me as done',
       id: 1,
       priority: 1,
-      active: true
+      active: true,
+      pomodoros: 0
     },
     {
-      description: 'todo 2',
+      description: 'Low priority - just mark me as done and start creating your task list for today!',
       id: 2,
       priority: 3,
-      active: true
+      active: true,
+      pomodoros: 0
     },
     {
-      description: 'todo 3',
+      description: 'Medium priority - сonsolidate your knowledge - mark me as done',
       id: 3,
       priority: 2,
-      active: true
-    },
-    {
-      description: 'todo 4',
-      id: 4,
-      priority: 1,
-      active: false,
-      pomodoros: 3
-    },
-    {
-      description: 'todo 5',
-      id: 5,
-      priority: 1,
-      active: false,
-      pomodoros: 5
+      active: true,
+      pomodoros: 0
     }
   ]
 }

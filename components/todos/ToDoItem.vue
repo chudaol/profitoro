@@ -1,11 +1,18 @@
 <template>
   <a href="#" :class="className" @click="toggleDone">
     {{ description }}
-    <span v-if="pomodoros !== null" class="badge badge-success badge-pill">{{ pomodoros }}</span>
+    <span
+      v-if="active === false"
+      class="badge badge-success badge-pill"
+      data-toggle="tooltip" data-placement="top" title="Number of pomodoros it took to complete this task"
+    >
+      {{ pomodoros }}
+    </span>
   </a>
 </template>
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import _ from 'lodash'
 
   const PRIORITIES_CLASSES_MAP = {
     1: 'list-group-item-danger',
@@ -26,7 +33,7 @@
     methods: {
       ...mapActions(['markToDoAsDone', 'setToDoPomodoros']),
       toggleDone () {
-        let pomodoros = this.totalPomodoros - this.pomodorosWhenStarted
+        let pomodoros = _.isFinite(this.pomodoros) ? this.pomodoros : (this.totalPomodoros - this.pomodorosWhenStarted)
         this.setToDoPomodoros({id: this.id, pomodoros})
         this.markToDoAsDone(this.id)
       }

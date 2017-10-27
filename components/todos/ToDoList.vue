@@ -17,7 +17,12 @@
       </div>
     </form>
     <h2 class="title">ToDo</h2>
-    <div class="list-group">
+    <div v-show="activeTodos.length === 0">
+      <div class="alert alert-success" role="alert">
+        Yay! All Done!!! <span>&hearts;</span><span>&hearts;</span><span>&hearts;</span>
+      </div>
+    </div>
+    <div v-show="activeTodos.length !== 0" class="list-group">
       <to-do-item v-for="item in activeTodos"
                   :key="item.id"
                   :active="item.active"
@@ -41,6 +46,7 @@
 
       </to-do-item>
     </div>
+    <a class="profitoro-link" v-show="doneTodos.length > 0" href="#" @click="clearDone">Clear Done</a>
   </div>
 </template>
 <script>
@@ -62,7 +68,7 @@
       ToDoItem
     },
     methods: {
-      ...mapActions(['addTodo']),
+      ...mapActions(['addTodo', 'clearDoneTodos']),
       onSubmit (ev) {
         ev.preventDefault()
         ev.stopPropagation()
@@ -74,7 +80,21 @@
         })
         this.todo = ''
         this.priority = DEFAULT_PRIORITY
+      },
+      clearDone (ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        this.clearDoneTodos()
       }
     }
   }
 </script>
+<style scoped lang="scss">
+  a.profitoro-link {
+    color: rgba(241,93,89,.7);
+    cursor: pointer;
+    &:active, &:hover {
+      color: rgb(241,93,89);
+    }
+  }
+</style>

@@ -36,5 +36,8 @@ export default {
   },
   addTodo (state, todo) {
     state.todos.push(todo)
+  },
+  clearToDos (state, todos) {
+    state.todos = _.without(state.todos, ...todos)
   }
 }
