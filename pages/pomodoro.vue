@@ -3,27 +3,35 @@
     <header-component></header-component>
     <div class="container min-full-height">
       <div class="main-content row">
-        <div v-show="state !== 0" class="col-sm-12 col-md-6 col-lg-5">
-          <div v-if="!showKittens">
-            <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
-            <h2 class="title">{{ chosenWorkout.name }}</h2>
-            <p class="description">
-              {{ chosenWorkout.description }}
-            </p>
+        <div :class="[state == 0 && todolistvisible ? 'col-sm-12 col-md-6 col-lg-5' : 'col-2']">
+          <div v-if="state != 0">
+            <div v-if="!showKittens">
+              <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
+              <h2 class="title">{{ chosenWorkout.name }}</h2>
+              <p class="description">
+                {{ chosenWorkout.description }}
+              </p>
+            </div>
+            <div v-if="showKittens">
+              <kittens-component></kittens-component>
+            </div>
+            <div v-if="!showKittens">
+              <button type="button" class="button button-primary">Done!</button>
+              <button type="button" class="button button-primary">Next</button>
+            </div>
+            <div class="lazy-section">
+              <h4 class="title">Feeling <span class="bold">{{ showKittens ? 'energetic' : 'lazy' }}</span>?</h4>
+              <button type="button" class="button button-primary-faded" @click="toggleKittens">{{ showKittens ? showWorkoutsButtonText : showKittensButtonText }}</button>
+            </div>
           </div>
-          <div v-if="showKittens">
-            <kittens-component></kittens-component>
-          </div>
-          <div v-if="!showKittens">
-            <button type="button" class="button button-primary">Done!</button>
-            <button type="button" class="button button-primary">Next</button>
-          </div>
-          <div class="lazy-section">
-            <h4 class="title">Feeling <span class="bold">{{ showKittens ? 'energetic' : 'lazy' }}</span>?</h4>
-            <button type="button" class="button button-primary-faded" @click="toggleKittens">{{ showKittens ? showWorkoutsButtonText : showKittensButtonText }}</button>
+          <div v-if="state == 0">
+            <a class="profitoro-link" data-toggle="collapse" href="#todolist" aria-expanded="true" @click="toggleToDoListVisible">
+              {{ todolistvisible ? 'Hide ToDo List' : 'Show ToDo List'}}
+            </a>
+            <to-do-list class="collapse show" aria-expanded="true" id="todolist"></to-do-list>
           </div>
         </div>
-        <div class="countdown-holder col-sm-12" v-bind:class="[state !== 0 ? 'col-md-6 col-lg-7' : 'col-md-12']">
+        <div class="countdown-holder" :class="[state == 0 && todolistvisible ? 'col-sm-12 col-md-6 col-lg-7' : 'col-12']">
           <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
         </div>
       </div>
@@ -34,6 +42,7 @@
 <script>
   import CountDownTimer from '~/components/timer/CountDownTimer'
   import KittensComponent from '~/components/timer/KittensComponent'
+  import ToDoList from '~/components/todos/ToDoList'
   import { HeaderComponent, FooterComponent } from '~/components/common'
   import { mapGetters, mapActions } from 'vuex'
   import { beep } from '~/utils/utils'
@@ -52,7 +61,8 @@
         chosenWorkout: {name: '', description: '', picture: ''},
         showKittens: false,
         showKittensButtonText: 'Show me some kittens!',
-        showWorkoutsButtonText: 'I wanna exercise!'
+        showWorkoutsButtonText: 'I wanna exercise!',
+        todolistvisible: true
       }
     },
     computed: {
@@ -87,7 +97,8 @@
       FooterComponent,
       HeaderComponent,
       CountDownTimer,
-      KittensComponent
+      KittensComponent,
+      ToDoList
     },
     methods: {
       ...mapActions(['updateTotalPomodoros']),
@@ -119,6 +130,9 @@
       },
       toggleKittens () {
         this.showKittens = !this.showKittens
+      },
+      toggleToDoListVisible () {
+        this.todolistvisible = !this.todolistvisible
       }
     }
   }
@@ -148,6 +162,14 @@
 
     .title {
       font-size: $font-size-medium;
+    }
+  }
+  a.profitoro-link {
+    color: rgba(241,93,89,.7);
+    cursor: pointer;
+
+    &:active, &:hover {
+      color: rgb(241,93,89);
     }
   }
 </style>

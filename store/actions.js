@@ -264,5 +264,24 @@ export default {
     } catch (error) {
       return
     }
-  })
+  }),
+  /**
+   * Marks given todoItem as done
+   * @param commit
+   * @param todoId
+   */
+  markToDoAsDone ({ commit }, todoId) {
+    commit('markAsDone', todoId)
+  },
+  setToDoPomodoros ({ commit }, {id, pomodoros}) {
+    commit('setToDoPomodoros', {id, pomodoros})
+  },
+  addTodo ({ commit }, todo) {
+    todo.id = uuidv1()
+    todo.pomodoros = null
+    commit('addTodo', todo)
+  },
+  clearDoneTodos ({ commit, getters }) {
+    commit('clearToDos', getters.doneTodos)
+  }
 }

@@ -31,5 +31,28 @@ export default {
   statistics,
   displayName,
   workouts: [],
-  authError: ''
+  authError: '',
+  todos: [
+    {
+      description: 'High priority - learn how to use the ToDo list - mark me as done',
+      id: 1,
+      priority: 1,
+      active: true,
+      pomodoros: 0
+    },
+    {
+      description: 'Low priority - just mark me as done and start creating your task list for today!',
+      id: 2,
+      priority: 3,
+      active: true,
+      pomodoros: 0
+    },
+    {
+      description: 'Medium priority - сonsolidate your knowledge - mark me as done',
+      id: 3,
+      priority: 2,
+      active: true,
+      pomodoros: 0
+    }
+  ]
 }
