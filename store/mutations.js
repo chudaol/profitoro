@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export default {
   setWorkingPomodoro (state, workingPomodoro) {
     state.config.workingPomodoro = workingPomodoro
@@ -25,5 +27,8 @@ export default {
   },
   setAuthError (state, value) {
     state.authError = value
+  },
+  markAsDone (state, todoId) {
+    _.find(state.todos, todo => todo.id === todoId).active = false
   }
 }

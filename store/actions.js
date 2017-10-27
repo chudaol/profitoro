@@ -264,5 +264,13 @@ export default {
     } catch (error) {
       return
     }
-  })
+  }),
+  /**
+   * Marks given todoItem as done
+   * @param commit
+   * @param todoId
+   */
+  markToDoAsDone ({ commit }, todoId) {
+    commit('markAsDone', todoId)
+  }
 }

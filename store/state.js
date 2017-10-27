@@ -31,5 +31,13 @@ export default {
   statistics,
   displayName,
   workouts: [],
-  authError: ''
+  authError: '',
+  todos: [
+    {
+      description: 'aaaa',
+      id: 1,
+      priority: 'high',
+      active: true
+    }
+  ]
 }
