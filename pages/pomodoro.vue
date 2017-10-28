@@ -3,7 +3,7 @@
     <header-component></header-component>
     <div class="container min-full-height">
       <div class="main-content row">
-        <div :class="[state == 0 && todolistvisible ? 'col-sm-12 col-md-6 col-lg-5' : 'col-2']">
+        <div :class="[state != 0 || todolistvisible ? 'col-sm-12 col-md-6 col-lg-5' : 'col-2']">
           <div v-if="state != 0">
             <div v-if="!showKittens">
               <img class="img-fluid rounded" :src="chosenWorkout.picture" :alt="chosenWorkout.name">
@@ -31,7 +31,7 @@
             <to-do-list class="collapse show" aria-expanded="true" id="todolist"></to-do-list>
           </div>
         </div>
-        <div class="countdown-holder" :class="[state == 0 && todolistvisible ? 'col-sm-12 col-md-6 col-lg-7' : 'col-12']">
+        <div class="countdown-holder" :class="[state != 0 || todolistvisible ? 'col-sm-12 col-md-6 col-lg-7' : 'col-12']">
           <count-down-timer ref="countdowntimer" @finished="togglePomodoro" :time="time"></count-down-timer>
         </div>
       </div>
