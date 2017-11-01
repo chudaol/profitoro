@@ -34,10 +34,11 @@ export default {
   authError: '',
   todos: [
     {
-      description: 'High priority - learn how to use the ToDo list - mark me as done',
+      description: 'High priority - learn how to use the ToDo list - start me',
       id: 1,
       priority: 1,
       active: true,
+      progress: false,
       pomodoros: 0
     },
     {
@@ -45,6 +46,7 @@ export default {
       id: 2,
       priority: 3,
       active: true,
+      progress: true,
       pomodoros: 0
     },
     {
@@ -52,6 +54,7 @@ export default {
       id: 3,
       priority: 2,
       active: true,
+      progress: true,
       pomodoros: 0
     }
   ]

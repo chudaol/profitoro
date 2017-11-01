@@ -31,6 +31,15 @@ export default {
   markAsDone (state, todoId) {
     _.find(state.todos, todo => todo.id === todoId).active = false
   },
+  setActive (state, { id, value }) {
+    _.find(state.todos, todo => todo.id === id).active = value
+  },
+  setInProgress (state, { id, value }) {
+    _.find(state.todos, todo => todo.id === id).progress = value
+  },
+  setPomorodosWhenStarted (state, {id, pomodoros}) {
+    _.find(state.todos, todo => todo.id === id).pomodorosWhenStarted = pomodoros
+  },
   setToDoPomodoros (state, {id, pomodoros}) {
     _.find(state.todos, todo => todo.id === id).pomodoros = pomodoros
   },

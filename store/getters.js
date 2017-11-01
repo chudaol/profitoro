@@ -10,6 +10,7 @@ export default {
   authError: state => state.authError,
   totalPomodoros: state => state.statistics.totalPomodoros,
   todos: state => state.todos,
-  activeTodos: state => _.sortBy(_.filter(state.todos, todo => todo.active), 'priority'),
+  activeTodos: state => _.sortBy(_.filter(state.todos, todo => todo.active && !todo.progress), 'priority'),
+  progressTodos: state => _.sortBy(_.filter(state.todos, todo => todo.progress), 'priority'),
   doneTodos: state => _.filter(state.todos, todo => !todo.active)
 }

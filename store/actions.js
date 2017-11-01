@@ -266,15 +266,27 @@ export default {
     }
   }),
   /**
+   * Marks given todoItem as in progress
+   * @param commit
+   * @param todoId
+   */
+  markToDoAsInProgress ({ commit }, todoId) {
+    commit('setInProgress', {id: todoId, value: true})
+  },
+  /**
    * Marks given todoItem as done
    * @param commit
    * @param todoId
    */
   markToDoAsDone ({ commit }, todoId) {
+    commit('setInProgress', {id: todoId, value: false})
     commit('markAsDone', todoId)
   },
   setToDoPomodoros ({ commit }, {id, pomodoros}) {
     commit('setToDoPomodoros', {id, pomodoros})
+  },
+  setPomodorosWhenStarted ({ commit }, {id, pomodoros}) {
+    commit('setPomorodosWhenStarted', {id, pomodoros})
   },
   addTodo ({ commit }, todo) {
     todo.id = uuidv1()

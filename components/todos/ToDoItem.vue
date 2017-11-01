@@ -1,6 +1,7 @@
 <template>
-  <a href="#" :class="className" @click="toggleDone">
-    <input type="checkbox" :checked="!active" :disabled="!active">
+  <a href="#" :class="className" @click="onClick">
+    <button v-show="active && !progress" class="btn btn-link">start</button>
+    <input v-show="progress || !active" type="checkbox" :checked="!active" :disabled="!active">
     {{ description }}
     <span
       v-if="active === false"
@@ -23,7 +24,7 @@
   const DONE_CLASS = 'list-group-item-success'
 
   export default {
-    props: ['active', 'priority', 'description', 'pomodoros', 'id', 'pomodorosWhenStarted'],
+    props: ['active', 'progress', 'priority', 'description', 'pomodoros', 'id', 'pomodorosWhenStarted'],
     computed: {
       ...mapGetters(['totalPomodoros']),
       className () {
@@ -32,11 +33,24 @@
       }
     },
     methods: {
-      ...mapActions(['markToDoAsDone', 'setToDoPomodoros']),
+      ...mapActions(['markToDoAsDone', 'markToDoAsInProgress', 'setToDoPomodoros', 'setPomodorosWhenStarted']),
+      onClick () {
+        console.log(this.progress)
+        if (this.progress) {
+          this.toggleDone()
+        } else {
+          this.toggleInProgress()
+        }
+      },
       toggleDone () {
         let pomodoros = _.isFinite(this.pomodoros) ? this.pomodoros : (this.totalPomodoros - this.pomodorosWhenStarted)
         this.setToDoPomodoros({id: this.id, pomodoros})
         this.markToDoAsDone(this.id)
+      },
+      toggleInProgress () {
+        let pomodoros = this.totalPomodoros
+        this.setPomodorosWhenStarted({id: this.id, pomodoros})
+        this.markToDoAsInProgress(this.id)
       }
     }
   }
@@ -44,5 +58,8 @@
 <style scoped>
   a.list-group-item-success {
     text-decoration: line-through;
+  }
+  .btn.btn-link {
+    color: gray;
   }
 </style>

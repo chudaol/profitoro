@@ -17,7 +17,7 @@
       </div>
     </form>
     <h2 class="title">ToDo</h2>
-    <div v-show="activeTodos.length === 0">
+    <div v-show="activeTodos.length === 0 && progressTodos.length === 0">
       <div class="alert alert-success" role="alert">
         Yay! All Done!!! <span>&hearts;</span><span>&hearts;</span><span>&hearts;</span>
       </div>
@@ -27,10 +27,25 @@
                   :key="item.id"
                   :active="item.active"
                   :description="item.description"
+                  :progress="item.progress"
                   :priority="item.priority"
                   :id="item.id"
                   :pomodorosWhenStarted="item.pomodorosWhenStarted"
                   :pomodoros="item.pomodoros">
+
+      </to-do-item>
+    </div>
+    <h2 class="title">InProgress</h2>
+    <div class="list-group">
+      <to-do-item v-for="item in progressTodos"
+                  :key="item.id"
+                  :active="item.active"
+                  :progress="item.progress"
+                  :description="item.description"
+                  :priority="item.priority"
+                  :id="item.id"
+                  :pomodoros="item.pomodoros"
+                  :pomodorosWhenStarted="item.pomodorosWhenStarted">
 
       </to-do-item>
     </div>
@@ -39,10 +54,12 @@
       <to-do-item v-for="item in doneTodos"
                   :key="item.id"
                   :active="item.active"
+                  :progress="item.progress"
                   :description="item.description"
                   :priority="item.priority"
                   :id="item.id"
-                  :pomodoros="item.pomodoros">
+                  :pomodoros="item.pomodoros"
+                  :pomodorosWhenStarted="item.pomodorosWhenStarted">
 
       </to-do-item>
     </div>
@@ -62,7 +79,7 @@
       }
     },
     computed: {
-      ...mapGetters(['activeTodos', 'doneTodos', 'getTotalPomodoros'])
+      ...mapGetters(['activeTodos', 'doneTodos', 'progressTodos', 'getTotalPomodoros'])
     },
     components: {
       ToDoItem
@@ -76,6 +93,7 @@
           description: this.todo,
           priority: this.priority,
           active: true,
+          progress: false,
           pomodorosWhenStarted: this.getTotalPomodoros
         })
         this.todo = ''

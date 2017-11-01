@@ -30,5 +30,8 @@ export default {
   },
   doneTodos: () => {
     return []
+  },
+  progressTodos: () => {
+    return []
   }
 }
