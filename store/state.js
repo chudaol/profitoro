@@ -34,6 +34,16 @@ export default {
   authError: '',
   todos: [
     {
+      description: 'Start using ToDo list',
+      id: 1,
+      priority: 1,
+      active: true,
+      progress: false,
+      pomodoros: 0
+    }
+  ],
+  firstTimeTodos: [
+    {
       description: 'High priority - learn how to use the ToDo list - start me',
       id: 1,
       priority: 1,

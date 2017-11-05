@@ -9,6 +9,9 @@
         <nuxt-link to="login">Click here to login </nuxt-link> or just <nuxt-link to="pomodoro">start using ProFitOro </nuxt-link>without registration.
       </p>
       <p class="lead">
+        Start your day with your prioritised ToDo list. Every time you'll move your ToDo items from progress to done, they will display the amount of Pomodoros it took you to complete them!
+      </p>
+      <p class="lead">
         Every time your Pomodoro working interval ends, you will be presented with a small workout that you have to perform during the Pomodoro resting period.
       </p>
       <h4 class="title">There are some advantages to become a <nuxt-link to="login">registered user</nuxt-link>:</h4>

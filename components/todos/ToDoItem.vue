@@ -1,7 +1,5 @@
 <template>
-  <a href="#" :class="className" @click="onClick">
-    <button v-show="active && !progress" class="btn btn-link">start</button>
-    <input v-show="progress || !active" type="checkbox" :checked="!active" :disabled="!active">
+  <a href="#" :class="className" @click="onClick" :disabled="!active">
     {{ description }}
     <span
       v-if="active === false"
@@ -10,6 +8,10 @@
     >
       {{ pomodoros }}
     </span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span v-show="active && !progress" aria-hidden="true">&gt;</span>
+      <input v-show="progress || !active" type="checkbox" :checked="!active" :disabled="!active">
+    </button>
   </a>
 </template>
 <script>
@@ -35,10 +37,9 @@
     methods: {
       ...mapActions(['markToDoAsDone', 'markToDoAsInProgress', 'setToDoPomodoros', 'setPomodorosWhenStarted']),
       onClick () {
-        console.log(this.progress)
         if (this.progress) {
           this.toggleDone()
-        } else {
+        } else if (this.active) {
           this.toggleInProgress()
         }
       },
@@ -61,5 +62,8 @@
   }
   .btn.btn-link {
     color: gray;
+  }
+  button.close span {
+    cursor: pointer;
   }
 </style>
