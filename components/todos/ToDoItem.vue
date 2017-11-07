@@ -30,7 +30,7 @@
     computed: {
       ...mapGetters(['totalPomodoros']),
       className () {
-        const className = this.active ? PRIORITIES_CLASSES_MAP[this.priority] : DONE_CLASS
+        const className = this.active ? PRIORITIES_CLASSES_MAP[this.priority] : DONE_CLASS + ' disabled'
         return 'list-group-item list-group-item-action ' + className
       }
     },
