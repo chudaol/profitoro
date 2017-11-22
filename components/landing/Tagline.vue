@@ -14,6 +14,7 @@
     margin: 0;
     font-weight: lighter;
     letter-spacing: 1px;
+    color: white;
 
     &.know-more {
       cursor: pointer;
