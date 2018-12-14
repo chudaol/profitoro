@@ -62,7 +62,7 @@
         showKittens: false,
         showKittensButtonText: 'Show me some kittens!',
         showWorkoutsButtonText: 'I wanna exercise!',
-        todolistvisible: true
+        todolistvisible: false
       }
     },
     computed: {
