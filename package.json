@@ -5,6 +5,7 @@
   "author": "Olga Filipova <chudaol@gmail.com>",
   "private": true,
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "moment": "^2.18.1",
     "nuxt": "latest",
     "uuid": "^3.1.0"
