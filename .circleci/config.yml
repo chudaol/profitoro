@@ -40,7 +40,7 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm rebuild node-sass && 
+              npm rebuild node-sass &&
               npm run generate
               ./node_modules/.bin/firebase use staging
               ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
